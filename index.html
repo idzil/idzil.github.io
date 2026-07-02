@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Idzi Łopatniuk – Analityk danych</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f4f1ec;
+      --bg-card: #ffffff;
+      --ink: #1a1f2e;
+      --ink-soft: #5c6478;
+      --ink-faint: #8b93a7;
+      --accent: #c45c26;
+      --accent-soft: #f3e8e0;
+      --line: #e2ddd4;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle at 1px 1px, #d8d2c8 1px, transparent 0);
+      background-size: 28px 28px;
+      opacity: 0.45;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+    }
+
+    /* ── Header ── */
+    header {
+      margin-bottom: 56px;
+      padding-bottom: 40px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      color: var(--ink-soft);
+      max-width: 540px;
+      margin-bottom: 28px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 20px;
+      background: var(--ink);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--accent); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 20px;
+      background: transparent;
+      color: var(--ink);
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1.5px solid var(--line);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 20px;
+      font-size: 0.88rem;
+      color: var(--ink-faint);
+    }
+
+    .contact-row a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .contact-row a:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── Sections ── */
+    section { margin-bottom: 52px; }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin-bottom: 14px;
+    }
+
+    .card p, .card li { color: var(--ink-soft); font-size: 0.94rem; }
+
+    /* ── Skills grid ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .skill-block {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+
+    .skill-block h3 {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .skill-block ul {
+      list-style: none;
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      line-height: 1.8;
+    }
+
+    /* ── Timeline ── */
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 16px 24px;
+      padding-bottom: 28px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .timeline-date {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--ink-faint);
+      padding-top: 3px;
+    }
+
+    .timeline-body h2 { margin-bottom: 2px; }
+
+    .org {
+      font-size: 0.88rem;
+      color: var(--ink-faint);
+      margin-bottom: 10px;
+    }
+
+    ul.dots {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul.dots li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 6px;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+    }
+
+    ul.dots li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* ── Tags ── */
+    .tags { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      padding: 3px 9px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 4px;
+    }
+
+    /* ── Certs ── */
+    .cert-list {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .cert-list li {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      padding: 10px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-size: 0.72rem;
+      color: var(--ink-faint);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+      .wrap { padding: 32px 18px 48px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header id="kontakt">
+      <p class="eyebrow">Portfolio · Gdańsk</p>
+      <h1>Idzi Łopatniuk</h1>
+      <p class="lead">Analityk danych — SQL, Excel, Power BI, Python, R</p>
+
+      <div class="actions">
+        <a class="btn-primary" href="CV_Idzi_Lopatniuk.pdf" download="CV_Idzi_Lopatniuk.pdf">Pobierz CV</a>
+        <a class="btn-ghost" href="https://www.linkedin.com/in/ilopatniuk/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn-ghost" href="https://github.com/idzil" target="_blank" rel="noopener">GitHub</a>
+      </div>
+
+      <div class="contact-row">
+        <span>Gdańsk, Polska</span>
+        <span>·</span>
+        <a href="mailto:idzi.lopatniuk@gmail.com">idzi.lopatniuk@gmail.com</a>
+        <span>·</span>
+        <span>+48 532 076 153</span>
+      </div>
+    </header>
+
+    <section id="o-mnie">
+      <div class="section-label">O mnie</div>
+      <div class="card">
+        <p>
+          Student studiów magisterskich na kierunku Informatyka i Ekonometria (specjalizacja Big Data)
+          na Uniwersytecie Gdańskim, absolwent Modelowania Matematycznego i Analizy Danych.
+          W pracy z danymi przechodzę pełny proces analityczny — ETL, czyszczenie, walidację,
+          analizę i wizualizację — z wykorzystaniem SQL, MS Excel (Power Query), Power BI, Pythona i R.
+          Podczas stażu w Dziale Rozwoju Systemów Giełdowych na GPW (projekt WATS) pracowałem
+          z danymi rynkowymi, weryfikacją jakości danych i analizą procesów operacyjnych.
+          Stawiam na dokładność, przejrzyste wnioski i analizy, które da się obronić
+          — od jakości danych po ostateczny raport.
+        </p>
+      </div>
+    </section>
+
+    <section id="umiejetnosci">
+      <div class="section-label">Umiejętności</div>
+      <div class="skills-grid">
+        <div class="skill-block">
+          <h3>Narzędzia</h3>
+          <ul>
+            <li>SQL</li>
+            <li>MS Excel · Power Query</li>
+            <li>Tabele przestawne</li>
+            <li>Power BI</li>
+            <li>Python · R</li>
+          </ul>
+        </div>
+        <div class="skill-block">
+          <h3>Analityka</h3>
+          <ul>
+            <li>ETL · walidacja danych</li>
+            <li>Analiza eksploracyjna</li>
+            <li>Regresja · statystyka</li>
+            <li>Wizualizacja wyników</li>
+          </ul>
+        </div>
+        <div class="skill-block">
+          <h3>Języki</h3>
+          <ul>
+            <li>Polski — ojczysty</li>
+            <li>Angielski — C1</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="doswiadczenie">
+      <div class="section-label">Doświadczenie</div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">08–09.2023</div>
+        <div class="timeline-body">
+          <h2>Stażysta – analityka danych i systemów giełdowych</h2>
+          <p class="org">Giełda Papierów Wartościowych · projekt GPW WATS</p>
+          <ul class="dots">
+            <li>Pozyskiwanie, czyszczenie i strukturyzacja danych rynkowych.</li>
+            <li>Weryfikacja jakości danych i poprawności zapisów w aplikacji STORK.</li>
+            <li>Analiza i parametryzacja alertów nadzorczych.</li>
+            <li>Analiza procesów rozliczeniowych na rynkach europejskich.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2021–2025</div>
+        <div class="timeline-body">
+          <h2>Pracownik zespołu</h2>
+          <p class="org">Wild West Ranch · praca sezonowa</p>
+          <ul class="dots">
+            <li>Praca zespołowa, organizacja zadań, kontakt z klientem.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2018–2020</div>
+        <div class="timeline-body">
+          <h2>Kelner</h2>
+          <p class="org">Bar Tornado · praca sezonowa</p>
+          <ul class="dots">
+            <li>Praca pod presją czasu w dynamicznym środowisku.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projekty">
+      <div class="section-label">Projekty</div>
+
+      <div class="card">
+        <h2>Analiza statystyk NBA – End-to-End Analytics</h2>
+        <p class="org">R · projekt analityczny</p>
+        <ul class="dots">
+          <li>Pipeline ETL: pozyskanie, czyszczenie i walidacja danych.</li>
+          <li>Analiza eksploracyjna i regresyjna; wizualizacja i dokumentacja wyników.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">R</span>
+          <span class="tag">ETL</span>
+          <span class="tag">Regresja</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Poker Broadcast System</h2>
+        <p class="org">Python · OpenCV · PyTorch</p>
+        <ul class="dots">
+          <li>Aplikacja do przetwarzania danych w czasie rzeczywistym.</li>
+          <li>Czyszczenie danych, walidacja wejścia, statystyki na żywo.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">OpenCV</span>
+          <span class="tag">Walidacja danych</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="wyksztalcenie">
+      <div class="section-label">Wykształcenie</div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2025–obecnie</div>
+        <div class="timeline-body">
+          <h2>Studia magisterskie</h2>
+          <p class="org">Uniwersytet Gdański · Informatyka i Ekonometria</p>
+          <p>Specjalizacja: Big Data</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2022–2025</div>
+        <div class="timeline-body">
+          <h2>Studia licencjackie</h2>
+          <p class="org">Uniwersytet Gdański</p>
+          <p>Modelowanie Matematyczne i Analiza Danych</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="certyfikaty">
+      <div class="section-label">Certyfikaty</div>
+      <ul class="cert-list">
+        <li>Power BI — Santander Open Academy (09.2025)</li>
+        <li>Introduction to Data Science — Santander Open Academy (09.2025)</li>
+        <li>Digital Transformation — Santander Open Academy (09.2025)</li>
+        <li>Angielski C1 — Uniwersytet Gdański (07.2022)</li>
+      </ul>
+    </section>
+
+    <footer>
+      Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb procesu rekrutacji zgodnie z RODO (UE 2016/679).
+    </footer>
+
+  </div>
+</body>
+</html>
