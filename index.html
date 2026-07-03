@@ -13,11 +13,13 @@
       --bg: #0f1218;
       --bg-card: #181d27;
       --ink: #eef0f4;
-      --ink-soft: #a8b0c0;
-      --ink-faint: #6b7589;
-      --accent: #e07a45;
-      --accent-soft: rgba(224, 122, 69, 0.14);
-      --line: #2a3140;
+      --ink-soft: #c8ced9;
+      --ink-faint: #9aa3b5;
+      --accent: #6ea8fe;
+      --accent-hover: #5596f0;
+      --accent-light: #a8c9ff;
+      --accent-soft: rgba(110, 168, 254, 0.12);
+      --line: #2e3648;
       --mono: 'JetBrains Mono', monospace;
       --max: 1360px;
       --sidebar: 320px;
@@ -109,7 +111,7 @@
       white-space: nowrap;
     }
 
-    .btn-primary:hover { background: #c96838; }
+    .btn-primary:hover { background: var(--accent-hover); }
 
     .btn-ghost {
       display: inline-flex;
@@ -133,7 +135,7 @@
       flex-wrap: wrap;
       gap: 8px 20px;
       font-size: 0.88rem;
-      color: var(--ink-faint);
+      color: var(--ink-soft);
       grid-column: 1 / -1;
     }
 
@@ -164,7 +166,7 @@
       font-size: 0.7rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--ink-faint);
+      color: var(--ink-soft);
       margin-bottom: 16px;
       display: flex;
       align-items: center;
@@ -210,7 +212,7 @@
       font-size: 0.68rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #f0a070;
+      color: var(--accent-light);
       margin-bottom: 12px;
     }
 
@@ -231,8 +233,8 @@
       font-size: 0.72rem;
       padding: 4px 10px;
       background: var(--accent-soft);
-      color: #f0a070;
-      border: 1px solid rgba(224, 122, 69, 0.25);
+      color: var(--accent-light);
+      border: 1px solid rgba(110, 168, 254, 0.28);
       border-radius: 4px;
     }
 
@@ -262,13 +264,13 @@
     .timeline-date {
       font-family: var(--mono);
       font-size: 0.8rem;
-      color: var(--ink-faint);
+      color: var(--ink-soft);
       padding-top: 3px;
     }
 
     .org {
       font-size: 0.88rem;
-      color: var(--ink-faint);
+      color: var(--ink-soft);
       margin-bottom: 10px;
     }
 
@@ -323,7 +325,7 @@
       padding-top: 24px;
       border-top: 1px solid var(--line);
       font-size: 0.72rem;
-      color: var(--ink-faint);
+      color: var(--ink-soft);
       text-align: center;
       line-height: 1.6;
     }
