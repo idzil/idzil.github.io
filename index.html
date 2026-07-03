@@ -225,6 +225,27 @@
 
     .side-block li + li { margin-top: 2px; }
 
+    .side-block ul.bullets {
+      list-style: none;
+      padding: 0;
+    }
+
+    .side-block ul.bullets li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+
+    .side-block ul.bullets li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
     /* ── Skills tags in sidebar ── */
     .tags-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
 
@@ -407,10 +428,12 @@
         </div>
         <div class="side-block">
           <h3>Analityka</h3>
-          <ul>
-            <li>ETL · walidacja danych</li>
+          <ul class="bullets">
+            <li>ETL</li>
+            <li>Walidacja danych</li>
             <li>Analiza eksploracyjna</li>
-            <li>Regresja · wnioskowanie statystyczne</li>
+            <li>Regresja</li>
+            <li>Wnioskowanie statystyczne</li>
             <li>Analiza szeregów czasowych</li>
             <li>Analiza wielowymiarowa</li>
             <li>Wizualizacja wyników</li>
