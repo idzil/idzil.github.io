@@ -55,6 +55,46 @@
       padding: 40px 48px 72px;
     }
 
+    /* ── Top navigation ── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      margin: -40px -48px 36px;
+      padding: 14px 48px;
+      background: rgba(15, 18, 24, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .site-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+
+    .site-nav a:hover {
+      color: var(--accent-light);
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    section[id] { scroll-margin-top: 72px; }
+
     /* ── Header ── */
     header {
       display: grid;
@@ -378,16 +418,35 @@
       .header-side { align-items: flex-start; }
       .actions { justify-content: flex-start; }
       .grid-2, .cert-grid { grid-template-columns: 1fr; }
+      .site-nav { margin: -40px -48px 28px; }
     }
 
     @media (max-width: 600px) {
       .wrap { padding: 28px 20px 48px; }
+      .site-nav {
+        margin: -28px -20px 24px;
+        padding: 12px 20px;
+      }
+      .site-nav ul { gap: 6px; }
+      .site-nav a {
+        padding: 7px 12px;
+        font-size: 0.82rem;
+      }
       .timeline-item { grid-template-columns: 1fr; gap: 4px; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
+
+    <nav class="site-nav" aria-label="Nawigacja po stronie">
+      <ul>
+        <li><a href="#o-mnie">O mnie</a></li>
+        <li><a href="#doswiadczenie">Doświadczenie</a></li>
+        <li><a href="#projekty">Projekty</a></li>
+        <li><a href="#wyksztalcenie">Wykształcenie</a></li>
+      </ul>
+    </nav>
 
     <header id="kontakt">
       <div class="header-main">
