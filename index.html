@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
   <title>Idzi Łopatniuk – Analityk danych</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f4f1ec;
-      --bg-card: #ffffff;
-      --ink: #1a1f2e;
-      --ink-soft: #5c6478;
-      --ink-faint: #8b93a7;
-      --accent: #c45c26;
-      --accent-soft: #f3e8e0;
-      --line: #e2ddd4;
+      --bg: #0f1218;
+      --bg-card: #181d27;
+      --ink: #eef0f4;
+      --ink-soft: #a8b0c0;
+      --ink-faint: #6b7589;
+      --accent: #e07a45;
+      --accent-soft: rgba(224, 122, 69, 0.14);
+      --line: #2a3140;
       --mono: 'JetBrains Mono', monospace;
       --max: 1360px;
       --sidebar: 320px;
@@ -37,9 +38,9 @@
       content: '';
       position: fixed;
       inset: 0;
-      background-image: radial-gradient(circle at 1px 1px, #d8d2c8 1px, transparent 0);
+      background-image: radial-gradient(circle at 1px 1px, #252b38 1px, transparent 0);
       background-size: 28px 28px;
-      opacity: 0.4;
+      opacity: 0.5;
       pointer-events: none;
       z-index: 0;
     }
@@ -60,7 +61,7 @@
       align-items: end;
       margin-bottom: 48px;
       padding-bottom: 36px;
-      border-bottom: 2px solid var(--ink);
+      border-bottom: 2px solid var(--line);
     }
 
     .header-main { min-width: 0; }
@@ -71,6 +72,7 @@
       letter-spacing: -0.03em;
       line-height: 1.05;
       margin-bottom: 8px;
+      color: var(--ink);
     }
 
     .lead {
@@ -97,24 +99,24 @@
       display: inline-flex;
       align-items: center;
       padding: 11px 22px;
-      background: var(--ink);
+      background: var(--accent);
       color: #fff;
       text-decoration: none;
       border-radius: 6px;
       font-size: 0.9rem;
       font-weight: 600;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.15s;
       white-space: nowrap;
     }
 
-    .btn-primary:hover { background: var(--accent); }
+    .btn-primary:hover { background: #c96838; }
 
     .btn-ghost {
       display: inline-flex;
       align-items: center;
       padding: 11px 18px;
       background: transparent;
-      color: var(--ink);
+      color: var(--ink-soft);
       text-decoration: none;
       border-radius: 6px;
       font-size: 0.9rem;
@@ -208,7 +210,7 @@
       font-size: 0.68rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: #f0a070;
       margin-bottom: 12px;
     }
 
@@ -229,7 +231,8 @@
       font-size: 0.72rem;
       padding: 4px 10px;
       background: var(--accent-soft);
-      color: var(--accent);
+      color: #f0a070;
+      border: 1px solid rgba(224, 122, 69, 0.25);
       border-radius: 4px;
     }
 
