@@ -52,19 +52,25 @@
       z-index: 1;
       max-width: var(--max);
       margin: 0 auto;
-      padding: 40px 48px 72px;
+      padding: 96px 48px 72px;
     }
 
     /* ── Top navigation ── */
     .site-nav {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
-      margin: -40px -48px 36px;
-      padding: 14px 48px;
-      background: rgba(15, 18, 24, 0.92);
+      background: rgba(15, 18, 24, 0.96);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
+    }
+
+    .site-nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 48px;
     }
 
     .site-nav ul {
@@ -418,15 +424,12 @@
       .header-side { align-items: flex-start; }
       .actions { justify-content: flex-start; }
       .grid-2, .cert-grid { grid-template-columns: 1fr; }
-      .site-nav { margin: -40px -48px 28px; }
+      .wrap { padding-top: 88px; }
     }
 
     @media (max-width: 600px) {
-      .wrap { padding: 28px 20px 48px; }
-      .site-nav {
-        margin: -28px -20px 24px;
-        padding: 12px 20px;
-      }
+      .wrap { padding: 84px 20px 48px; }
+      .site-nav-inner { padding: 12px 20px; }
       .site-nav ul { gap: 6px; }
       .site-nav a {
         padding: 7px 12px;
@@ -440,12 +443,14 @@
   <div class="wrap">
 
     <nav class="site-nav" aria-label="Nawigacja po stronie">
-      <ul>
-        <li><a href="#o-mnie">O mnie</a></li>
-        <li><a href="#doswiadczenie">Doświadczenie</a></li>
-        <li><a href="#projekty">Projekty</a></li>
-        <li><a href="#wyksztalcenie">Wykształcenie</a></li>
-      </ul>
+      <div class="site-nav-inner">
+        <ul>
+          <li><a href="#o-mnie">O mnie</a></li>
+          <li><a href="#doswiadczenie">Doświadczenie</a></li>
+          <li><a href="#projekty">Projekty</a></li>
+          <li><a href="#wyksztalcenie">Wykształcenie</a></li>
+        </ul>
+      </div>
     </nav>
 
     <header id="kontakt">
