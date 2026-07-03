@@ -304,6 +304,15 @@
 
     .project-card .tags { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
 
+    .project-desc {
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      line-height: 1.65;
+      margin: 0 0 10px;
+    }
+
+    .project-desc:last-of-type { margin-bottom: 0; }
+
     .project-link {
       display: inline-block;
       margin-top: 14px;
@@ -486,11 +495,17 @@
           <div class="grid-2">
             <div class="project-card">
               <h2>Opóźnienia lotów USA</h2>
-              <p class="org">Power BI · Tableau · DAX</p>
-              <ul class="dots">
-                <li>5,8 mln lotów (2015, BTS/Kaggle); model gwiazdy i relacje logiczne.</li>
-                <li>Dashboardy: punktualność, rankingi Top N, dekompozycja przyczyn opóźnień.</li>
-              </ul>
+              <p class="org">Power BI · Tableau · DAX · model gwiazdy</p>
+              <p class="project-desc">
+                Analiza 5,8 mln lotów krajowych w USA (2015, BTS/Kaggle) w dwóch narzędziach BI:
+                w Power BI zbudowałem model gwiazdy z role-playing dimensions dla lotnisk odlotu i przylotu,
+                w Tableau — logiczną warstwę relacji bez sztywnego joinowania.
+              </p>
+              <p class="project-desc">
+                Dashboardy obejmują punktualność wg standardu BTS (≤15 min), rankingi Top N lotnisk, stanów i tras,
+                parametry What-If (próg opóźnienia, typ odlotów/przylotów) oraz dekompozycję przyczyn opóźnień
+                (linia lotnicza, pogoda, system, samolot). Projekt zawiera audyt jakości danych i zestaw miar DAX.
+              </p>
               <div class="tags">
                 <span class="tag">Power BI</span>
                 <span class="tag">Tableau</span>
@@ -501,10 +516,16 @@
             <div class="project-card">
               <h2>Factory Reset</h2>
               <p class="org">Analiza wielowymiarowa · R · BDL</p>
-              <ul class="dots">
-                <li>22 wskaźniki społeczno-ekonomiczne dla 16 województw (BDL, 2024).</li>
-                <li>PCA, Hellwig, k-means, rankingi TOPSIS/COPRAS, analiza kanoniczna.</li>
-              </ul>
+              <p class="project-desc">
+                Porównanie 16 województw Polski na podstawie 22 wskaźników społeczno-ekonomicznych
+                z Banku Danych Lokalnych GUS (rok 2024): rynek pracy, inwestycje, mieszkalnictwo,
+                edukacja, B+R i infrastruktura.
+              </p>
+              <p class="project-desc">
+                W R zaimplementowałem pełny pipeline: analiza wstępna i diagnostyka zmiennych, PCA,
+                selekcję Hellwiga, grupowanie hierarchiczne i k-means, rankingi TOPSIS/COPRAS
+                oraz analizę kanoniczną. Wyniki zapisane jako tabele i wykresy w raporcie końcowym.
+              </p>
               <div class="tags">
                 <span class="tag">R</span>
                 <span class="tag">PCA</span>
@@ -515,10 +536,15 @@
             <div class="project-card">
               <h2>Analiza statystyk NBA</h2>
               <p class="org">End-to-End Analytics · R</p>
-              <ul class="dots">
-                <li>Pipeline ETL: pozyskanie, czyszczenie i walidacja danych.</li>
-                <li>Analiza eksploracyjna i regresyjna; wizualizacja wyników.</li>
-              </ul>
+              <p class="project-desc">
+                Projekt end-to-end w R: pozyskanie danych o zawodnikach i meczach NBA, czyszczenie,
+                walidacja spójności oraz przygotowanie zestawu pod analizę statystyczną.
+              </p>
+              <p class="project-desc">
+                Wykonałem analizę eksploracyjną kluczowych metryk, modele regresyjne wyjaśniające
+                zależności między statystykami a wynikami oraz wizualizacje podsumowujące wnioski
+                — od surowych danych po czytelny raport analityczny.
+              </p>
               <div class="tags">
                 <span class="tag">R</span>
                 <span class="tag">ETL</span>
@@ -529,10 +555,15 @@
             <div class="project-card">
               <h2>Poker Broadcast System</h2>
               <p class="org">Python · OpenCV · PyTorch</p>
-              <ul class="dots">
-                <li>Przetwarzanie danych w czasie rzeczywistym.</li>
-                <li>Czyszczenie danych, walidacja wejścia, statystyki na żywo.</li>
-              </ul>
+              <p class="project-desc">
+                System do transmisji pokera na żywo: rozpoznawanie kart i stanu stołu z obrazu wideo
+                w czasie rzeczywistym z wykorzystaniem OpenCV i modeli PyTorch.
+              </p>
+              <p class="project-desc">
+                Obejmuje pipeline przetwarzania strumienia, walidację poprawności odczytów,
+                agregację statystyk rozdania i prezentację wyników na żywo — z naciskiem
+                na niezawodność danych przy dynamicznym wejściu wizualnym.
+              </p>
               <div class="tags">
                 <span class="tag">Python</span>
                 <span class="tag">OpenCV</span>
