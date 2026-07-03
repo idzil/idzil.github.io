@@ -71,6 +71,10 @@
       max-width: var(--max);
       margin: 0 auto;
       padding: 14px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
     }
 
     .site-nav ul {
@@ -78,6 +82,27 @@
       flex-wrap: wrap;
       gap: 8px;
       list-style: none;
+    }
+
+    .lang-toggle {
+      flex-shrink: 0;
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-family: var(--mono);
+      letter-spacing: 0.04em;
+      color: var(--accent-light);
+      background: var(--accent-soft);
+      border: 1px solid rgba(110, 168, 254, 0.35);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+
+    .lang-toggle:hover {
+      color: #fff;
+      border-color: var(--accent);
+      background: rgba(110, 168, 254, 0.22);
     }
 
     .site-nav a {
@@ -445,28 +470,29 @@
     <nav class="site-nav" aria-label="Nawigacja po stronie">
       <div class="site-nav-inner">
         <ul>
-          <li><a href="#o-mnie">O mnie</a></li>
-          <li><a href="#doswiadczenie">Doświadczenie</a></li>
-          <li><a href="#projekty">Projekty</a></li>
-          <li><a href="#wyksztalcenie">Wykształcenie</a></li>
+          <li><a href="#o-mnie" data-i18n="nav.about">O mnie</a></li>
+          <li><a href="#doswiadczenie" data-i18n="nav.experience">Doświadczenie</a></li>
+          <li><a href="#projekty" data-i18n="nav.projects">Projekty</a></li>
+          <li><a href="#wyksztalcenie" data-i18n="nav.education">Wykształcenie</a></li>
         </ul>
+        <button type="button" class="lang-toggle" id="lang-toggle" aria-label="Przełącz na angielski">EN</button>
       </div>
     </nav>
 
     <header id="kontakt">
       <div class="header-main">
         <h1>Idzi Łopatniuk</h1>
-        <p class="lead">Analityk danych — SQL, Excel, Power BI, Python, R</p>
+        <p class="lead" data-i18n="lead">Analityk danych — SQL, Excel, Power BI, Python, R</p>
       </div>
       <div class="header-side">
         <div class="actions">
-          <a class="btn-primary" href="CV_Idzi_Lopatniuk.pdf" download="CV_Idzi_Lopatniuk.pdf">Pobierz CV</a>
+          <a class="btn-primary" href="CV_Idzi_Lopatniuk.pdf" download="CV_Idzi_Lopatniuk.pdf" data-i18n="btn.download_cv">Pobierz CV</a>
           <a class="btn-ghost" href="https://www.linkedin.com/in/ilopatniuk/" target="_blank" rel="noopener">LinkedIn</a>
           <a class="btn-ghost" href="https://github.com/idzil" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
       <div class="contact-row">
-        <span>Gdynia, Polska</span>
+        <span data-i18n="location">Gdynia, Polska</span>
         <span>·</span>
         <a href="mailto:idzi.lopatniuk@gmail.com">idzi.lopatniuk@gmail.com</a>
         <span>·</span>
@@ -479,7 +505,7 @@
       <!-- Lewa kolumna — sticky -->
       <aside>
         <div class="side-block">
-          <h3>Narzędzia</h3>
+          <h3 data-i18n="aside.tools">Narzędzia</h3>
           <div class="tags-wrap">
             <span class="tag">SQL</span>
             <span class="tag">Excel</span>
@@ -491,32 +517,32 @@
           </div>
         </div>
         <div class="side-block">
-          <h3>Analityka</h3>
+          <h3 data-i18n="aside.analytics">Analityka</h3>
           <ul class="bullets">
-            <li>ETL</li>
-            <li>Walidacja danych</li>
-            <li>Analiza eksploracyjna</li>
-            <li>Regresja</li>
-            <li>Wnioskowanie statystyczne</li>
-            <li>Analiza szeregów czasowych</li>
-            <li>Analiza wielowymiarowa</li>
-            <li>Wizualizacja wyników</li>
+            <li data-i18n="skill.etl">ETL</li>
+            <li data-i18n="skill.validation">Walidacja danych</li>
+            <li data-i18n="skill.eda">Analiza eksploracyjna</li>
+            <li data-i18n="skill.regression">Regresja</li>
+            <li data-i18n="skill.inference">Wnioskowanie statystyczne</li>
+            <li data-i18n="skill.timeseries">Analiza szeregów czasowych</li>
+            <li data-i18n="skill.multivariate">Analiza wielowymiarowa</li>
+            <li data-i18n="skill.viz">Wizualizacja wyników</li>
           </ul>
         </div>
         <div class="side-block">
-          <h3>Języki</h3>
+          <h3 data-i18n="aside.languages">Języki</h3>
           <ul>
-            <li>Polski — ojczysty</li>
-            <li>Angielski — C1</li>
+            <li data-i18n="lang.pl">Polski — ojczysty</li>
+            <li data-i18n="lang.en_level">Angielski — C1</li>
           </ul>
         </div>
         <div class="side-block">
-          <h3>Certyfikaty</h3>
+          <h3 data-i18n="aside.certificates">Certyfikaty</h3>
           <ul>
-            <li>Power BI — Santander Open Academy (09.2025)</li>
-            <li>Intro to Data Science — Santander Open Academy (09.2025)</li>
-            <li>Digital Transformation — Santander Open Academy (09.2025)</li>
-            <li>Angielski C1 — UG (07.2022)</li>
+            <li data-i18n="cert.powerbi">Power BI — Santander Open Academy (09.2025)</li>
+            <li data-i18n="cert.ids">Intro to Data Science — Santander Open Academy (09.2025)</li>
+            <li data-i18n="cert.dt">Digital Transformation — Santander Open Academy (09.2025)</li>
+            <li data-i18n="cert.english">Angielski C1 — UG (07.2022)</li>
           </ul>
         </div>
       </aside>
@@ -525,9 +551,9 @@
       <main>
 
         <section id="o-mnie">
-          <div class="section-label">O mnie</div>
+          <div class="section-label" data-i18n="section.about">O mnie</div>
           <div class="card">
-            <p>
+            <p data-i18n="about.text">
               Student studiów magisterskich na kierunku Informatyka i Ekonometria (specjalizacja Big Data)
               na Uniwersytecie Gdańskim, absolwent Modelowania Matematycznego i Analizy Danych.
               W pracy z danymi przechodzę pełny proces analityczny — ETL, czyszczenie, walidację,
@@ -541,18 +567,18 @@
         </section>
 
         <section id="doswiadczenie">
-          <div class="section-label">Doświadczenie</div>
+          <div class="section-label" data-i18n="section.experience">Doświadczenie</div>
 
           <div class="timeline-item">
             <div class="timeline-date">08–09.2023</div>
             <div class="timeline-body">
-              <h2>Stażysta – analityka danych i systemów giełdowych</h2>
-              <p class="org">Giełda Papierów Wartościowych · projekt GPW WATS</p>
+              <h2 data-i18n="exp1.title">Stażysta – analityka danych i systemów giełdowych</h2>
+              <p class="org" data-i18n="exp1.org">Giełda Papierów Wartościowych · projekt GPW WATS</p>
               <ul class="dots">
-                <li>Pozyskiwanie, czyszczenie i strukturyzacja danych rynkowych.</li>
-                <li>Weryfikacja jakości danych i poprawności zapisów w aplikacji STORK.</li>
-                <li>Analiza i parametryzacja alertów nadzorczych.</li>
-                <li>Analiza procesów rozliczeniowych na rynkach europejskich.</li>
+                <li data-i18n="exp1.b1">Pozyskiwanie, czyszczenie i strukturyzacja danych rynkowych.</li>
+                <li data-i18n="exp1.b2">Weryfikacja jakości danych i poprawności zapisów w aplikacji STORK.</li>
+                <li data-i18n="exp1.b3">Analiza i parametryzacja alertów nadzorczych.</li>
+                <li data-i18n="exp1.b4">Analiza procesów rozliczeniowych na rynkach europejskich.</li>
               </ul>
             </div>
           </div>
@@ -560,10 +586,10 @@
           <div class="timeline-item">
             <div class="timeline-date">2021–2025</div>
             <div class="timeline-body">
-              <h2>Pracownik zespołu</h2>
-              <p class="org">Wild West Ranch · sezonowo</p>
+              <h2 data-i18n="exp2.title">Pracownik zespołu</h2>
+              <p class="org" data-i18n="exp2.org">Wild West Ranch · sezonowo</p>
               <ul class="dots">
-                <li>Praca zespołowa, organizacja zadań, kontakt z klientem.</li>
+                <li data-i18n="exp2.b1">Praca zespołowa, organizacja zadań, kontakt z klientem.</li>
               </ul>
             </div>
           </div>
@@ -571,27 +597,27 @@
           <div class="timeline-item">
             <div class="timeline-date">2018–2020</div>
             <div class="timeline-body">
-              <h2>Kelner</h2>
-              <p class="org">Bar Tornado · sezonowo</p>
+              <h2 data-i18n="exp3.title">Kelner</h2>
+              <p class="org" data-i18n="exp3.org">Bar Tornado · sezonowo</p>
               <ul class="dots">
-                <li>Praca pod presją czasu w dynamicznym środowisku.</li>
+                <li data-i18n="exp3.b1">Praca pod presją czasu w dynamicznym środowisku.</li>
               </ul>
             </div>
           </div>
         </section>
 
         <section id="projekty">
-          <div class="section-label">Projekty</div>
+          <div class="section-label" data-i18n="section.projects">Projekty</div>
           <div class="grid-2">
             <div class="project-card">
-              <h2>Opóźnienia lotów USA</h2>
-              <p class="org">Power BI · Tableau · DAX · model gwiazdy</p>
-              <p class="project-desc">
+              <h2 data-i18n="proj1.title">Opóźnienia lotów USA</h2>
+              <p class="org" data-i18n="proj1.sub">Power BI · Tableau · DAX · model gwiazdy</p>
+              <p class="project-desc" data-i18n="proj1.p1">
                 Analiza 5,8 mln lotów krajowych w USA (2015, BTS/Kaggle) w dwóch narzędziach BI:
                 w Power BI zbudowałem model gwiazdy z role-playing dimensions dla lotnisk odlotu i przylotu,
                 w Tableau — logiczną warstwę relacji bez sztywnego joinowania.
               </p>
-              <p class="project-desc">
+              <p class="project-desc" data-i18n="proj1.p2">
                 Dashboardy obejmują punktualność wg standardu BTS (≤15 min), rankingi Top N lotnisk, stanów i tras,
                 parametry What-If (próg opóźnienia, typ odlotów/przylotów) oraz dekompozycję przyczyn opóźnień
                 (linia lotnicza, pogoda, system, samolot). Projekt zawiera audyt jakości danych i zestaw miar DAX.
@@ -605,13 +631,13 @@
             </div>
             <div class="project-card">
               <h2>Factory Reset</h2>
-              <p class="org">Analiza wielowymiarowa · R · BDL</p>
-              <p class="project-desc">
+              <p class="org" data-i18n="proj2.sub">Analiza wielowymiarowa · R · BDL</p>
+              <p class="project-desc" data-i18n="proj2.p1">
                 Porównanie 16 województw Polski na podstawie 22 wskaźników społeczno-ekonomicznych
                 z Banku Danych Lokalnych GUS (rok 2024): rynek pracy, inwestycje, mieszkalnictwo,
                 edukacja, B+R i infrastruktura.
               </p>
-              <p class="project-desc">
+              <p class="project-desc" data-i18n="proj2.p2">
                 W R zaimplementowałem pełny pipeline: analiza wstępna i diagnostyka zmiennych, PCA,
                 selekcję Hellwiga, grupowanie hierarchiczne i k-means, rankingi TOPSIS/COPRAS
                 oraz analizę kanoniczną. Wyniki zapisane jako tabele i wykresy w raporcie końcowym.
@@ -624,13 +650,13 @@
               <a class="project-link" href="https://github.com/idzil/factory_reset_wojewodztwa" target="_blank" rel="noopener">GitHub →</a>
             </div>
             <div class="project-card">
-              <h2>Analiza statystyk NBA</h2>
-              <p class="org">End-to-End Analytics · R</p>
-              <p class="project-desc">
+              <h2 data-i18n="proj3.title">Analiza statystyk NBA</h2>
+              <p class="org" data-i18n="proj3.sub">End-to-End Analytics · R</p>
+              <p class="project-desc" data-i18n="proj3.p1">
                 Projekt end-to-end w R: pozyskanie danych o zawodnikach i meczach NBA, czyszczenie,
                 walidacja spójności oraz przygotowanie zestawu pod analizę statystyczną.
               </p>
-              <p class="project-desc">
+              <p class="project-desc" data-i18n="proj3.p2">
                 Wykonałem analizę eksploracyjną kluczowych metryk, modele regresyjne wyjaśniające
                 zależności między statystykami a wynikami oraz wizualizacje podsumowujące wnioski
                 — od surowych danych po czytelny raport analityczny.
@@ -645,11 +671,11 @@
             <div class="project-card">
               <h2>Poker Broadcast System</h2>
               <p class="org">Python · OpenCV · PyTorch</p>
-              <p class="project-desc">
+              <p class="project-desc" data-i18n="proj4.p1">
                 System do transmisji pokera na żywo: rozpoznawanie kart i stanu stołu z obrazu wideo
                 w czasie rzeczywistym z wykorzystaniem OpenCV i modeli PyTorch.
               </p>
-              <p class="project-desc">
+              <p class="project-desc" data-i18n="proj4.p2">
                 Obejmuje pipeline przetwarzania strumienia, walidację poprawności odczytów,
                 agregację statystyk rozdania i prezentację wyników na żywo — z naciskiem
                 na niezawodność danych przy dynamicznym wejściu wizualnym.
@@ -657,24 +683,24 @@
               <div class="tags">
                 <span class="tag">Python</span>
                 <span class="tag">OpenCV</span>
-                <span class="tag">Walidacja</span>
+                <span class="tag" data-i18n="tag.validation">Walidacja</span>
               </div>
             </div>
           </div>
         </section>
 
         <section id="wyksztalcenie">
-          <div class="section-label">Wykształcenie</div>
+          <div class="section-label" data-i18n="section.education">Wykształcenie</div>
           <div class="grid-2">
             <div class="card">
-              <h2>Studia magisterskie</h2>
-              <p class="org">2025 – obecnie · Uniwersytet Gdański</p>
-              <p style="color:var(--ink-soft);font-size:0.94rem;">Informatyka i Ekonometria<br>Specjalizacja: Big Data</p>
+              <h2 data-i18n="edu1.title">Studia magisterskie</h2>
+              <p class="org" data-i18n="edu1.org">2025 – obecnie · Uniwersytet Gdański</p>
+              <p style="color:var(--ink-soft);font-size:0.94rem;" data-i18n-html="edu1.desc">Informatyka i Ekonometria<br>Specjalizacja: Big Data</p>
             </div>
             <div class="card">
-              <h2>Studia licencjackie</h2>
-              <p class="org">2022 – 2025 · Uniwersytet Gdański</p>
-              <p style="color:var(--ink-soft);font-size:0.94rem;">Modelowanie Matematyczne<br>i Analiza Danych</p>
+              <h2 data-i18n="edu2.title">Studia licencjackie</h2>
+              <p class="org" data-i18n="edu2.org">2022 – 2025 · Uniwersytet Gdański</p>
+              <p style="color:var(--ink-soft);font-size:0.94rem;" data-i18n-html="edu2.desc">Modelowanie Matematyczne<br>i Analiza Danych</p>
             </div>
           </div>
         </section>
@@ -682,10 +708,185 @@
       </main>
     </div>
 
-    <footer>
+    <footer data-i18n="footer.rodo">
       Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb procesu rekrutacji zgodnie z RODO (UE 2016/679).
     </footer>
 
   </div>
+
+  <script>
+    const translations = {
+      pl: {
+        'meta.title': 'Idzi Łopatniuk – Analityk danych',
+        'nav.about': 'O mnie',
+        'nav.experience': 'Doświadczenie',
+        'nav.projects': 'Projekty',
+        'nav.education': 'Wykształcenie',
+        'nav.aria_to_en': 'Przełącz na angielski',
+        'nav.aria_to_pl': 'Przełącz na polski',
+        'lead': 'Analityk danych — SQL, Excel, Power BI, Python, R',
+        'btn.download_cv': 'Pobierz CV',
+        'location': 'Gdynia, Polska',
+        'aside.tools': 'Narzędzia',
+        'aside.analytics': 'Analityka',
+        'aside.languages': 'Języki',
+        'aside.certificates': 'Certyfikaty',
+        'skill.etl': 'ETL',
+        'skill.validation': 'Walidacja danych',
+        'skill.eda': 'Analiza eksploracyjna',
+        'skill.regression': 'Regresja',
+        'skill.inference': 'Wnioskowanie statystyczne',
+        'skill.timeseries': 'Analiza szeregów czasowych',
+        'skill.multivariate': 'Analiza wielowymiarowa',
+        'skill.viz': 'Wizualizacja wyników',
+        'lang.pl': 'Polski — ojczysty',
+        'lang.en_level': 'Angielski — C1',
+        'cert.powerbi': 'Power BI — Santander Open Academy (09.2025)',
+        'cert.ids': 'Intro to Data Science — Santander Open Academy (09.2025)',
+        'cert.dt': 'Digital Transformation — Santander Open Academy (09.2025)',
+        'cert.english': 'Angielski C1 — UG (07.2022)',
+        'section.about': 'O mnie',
+        'section.experience': 'Doświadczenie',
+        'section.projects': 'Projekty',
+        'section.education': 'Wykształcenie',
+        'about.text': 'Student studiów magisterskich na kierunku Informatyka i Ekonometria (specjalizacja Big Data) na Uniwersytecie Gdańskim, absolwent Modelowania Matematycznego i Analizy Danych. W pracy z danymi przechodzę pełny proces analityczny — ETL, czyszczenie, walidację, analizę i wizualizację — z wykorzystaniem SQL, MS Excel (Power Query), Power BI, Pythona i R. Podczas stażu w Dziale Rozwoju Systemów Giełdowych na GPW (projekt WATS) pracowałem z danymi rynkowymi, weryfikacją jakości danych i analizą procesów operacyjnych. Stawiam na dokładność, przejrzyste wnioski i analizy, które da się obronić — od jakości danych po ostateczny raport.',
+        'exp1.title': 'Stażysta – analityka danych i systemów giełdowych',
+        'exp1.org': 'Giełda Papierów Wartościowych · projekt GPW WATS',
+        'exp1.b1': 'Pozyskiwanie, czyszczenie i strukturyzacja danych rynkowych.',
+        'exp1.b2': 'Weryfikacja jakości danych i poprawności zapisów w aplikacji STORK.',
+        'exp1.b3': 'Analiza i parametryzacja alertów nadzorczych.',
+        'exp1.b4': 'Analiza procesów rozliczeniowych na rynkach europejskich.',
+        'exp2.title': 'Pracownik zespołu',
+        'exp2.org': 'Wild West Ranch · sezonowo',
+        'exp2.b1': 'Praca zespołowa, organizacja zadań, kontakt z klientem.',
+        'exp3.title': 'Kelner',
+        'exp3.org': 'Bar Tornado · sezonowo',
+        'exp3.b1': 'Praca pod presją czasu w dynamicznym środowisku.',
+        'proj1.title': 'Opóźnienia lotów USA',
+        'proj1.sub': 'Power BI · Tableau · DAX · model gwiazdy',
+        'proj1.p1': 'Analiza 5,8 mln lotów krajowych w USA (2015, BTS/Kaggle) w dwóch narzędziach BI: w Power BI zbudowałem model gwiazdy z role-playing dimensions dla lotnisk odlotu i przylotu, w Tableau — logiczną warstwę relacji bez sztywnego joinowania.',
+        'proj1.p2': 'Dashboardy obejmują punktualność wg standardu BTS (≤15 min), rankingi Top N lotnisk, stanów i tras, parametry What-If (próg opóźnienia, typ odlotów/przylotów) oraz dekompozycję przyczyn opóźnień (linia lotnicza, pogoda, system, samolot). Projekt zawiera audyt jakości danych i zestaw miar DAX.',
+        'proj2.sub': 'Analiza wielowymiarowa · R · BDL',
+        'proj2.p1': 'Porównanie 16 województw Polski na podstawie 22 wskaźników społeczno-ekonomicznych z Banku Danych Lokalnych GUS (rok 2024): rynek pracy, inwestycje, mieszkalnictwo, edukacja, B+R i infrastruktura.',
+        'proj2.p2': 'W R zaimplementowałem pełny pipeline: analiza wstępna i diagnostyka zmiennych, PCA, selekcję Hellwiga, grupowanie hierarchiczne i k-means, rankingi TOPSIS/COPRAS oraz analizę kanoniczną. Wyniki zapisane jako tabele i wykresy w raporcie końcowym.',
+        'proj3.title': 'Analiza statystyk NBA',
+        'proj3.sub': 'End-to-End Analytics · R',
+        'proj3.p1': 'Projekt end-to-end w R: pozyskanie danych o zawodnikach i meczach NBA, czyszczenie, walidacja spójności oraz przygotowanie zestawu pod analizę statystyczną.',
+        'proj3.p2': 'Wykonałem analizę eksploracyjną kluczowych metryk, modele regresyjne wyjaśniające zależności między statystykami a wynikami oraz wizualizacje podsumowujące wnioski — od surowych danych po czytelny raport analityczny.',
+        'proj4.p1': 'System do transmisji pokera na żywo: rozpoznawanie kart i stanu stołu z obrazu wideo w czasie rzeczywistym z wykorzystaniem OpenCV i modeli PyTorch.',
+        'proj4.p2': 'Obejmuje pipeline przetwarzania strumienia, walidację poprawności odczytów, agregację statystyk rozdania i prezentację wyników na żywo — z naciskiem na niezawodność danych przy dynamicznym wejściu wizualnym.',
+        'tag.validation': 'Walidacja',
+        'edu1.title': 'Studia magisterskie',
+        'edu1.org': '2025 – obecnie · Uniwersytet Gdański',
+        'edu1.desc': 'Informatyka i Ekonometria<br>Specjalizacja: Big Data',
+        'edu2.title': 'Studia licencjackie',
+        'edu2.org': '2022 – 2025 · Uniwersytet Gdański',
+        'edu2.desc': 'Modelowanie Matematyczne<br>i Analiza Danych',
+        'footer.rodo': 'Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb procesu rekrutacji zgodnie z RODO (UE 2016/679).'
+      },
+      en: {
+        'meta.title': 'Idzi Łopatniuk – Data Analyst',
+        'nav.about': 'About',
+        'nav.experience': 'Experience',
+        'nav.projects': 'Projects',
+        'nav.education': 'Education',
+        'nav.aria_to_en': 'Switch to English',
+        'nav.aria_to_pl': 'Switch to Polish',
+        'lead': 'Data Analyst — SQL, Excel, Power BI, Python, R',
+        'btn.download_cv': 'Download CV',
+        'location': 'Gdynia, Poland',
+        'aside.tools': 'Tools',
+        'aside.analytics': 'Analytics',
+        'aside.languages': 'Languages',
+        'aside.certificates': 'Certificates',
+        'skill.etl': 'ETL',
+        'skill.validation': 'Data validation',
+        'skill.eda': 'Exploratory analysis',
+        'skill.regression': 'Regression',
+        'skill.inference': 'Statistical inference',
+        'skill.timeseries': 'Time series analysis',
+        'skill.multivariate': 'Multivariate analysis',
+        'skill.viz': 'Data visualization',
+        'lang.pl': 'Polish — native',
+        'lang.en_level': 'English — C1',
+        'cert.powerbi': 'Power BI — Santander Open Academy (09.2025)',
+        'cert.ids': 'Intro to Data Science — Santander Open Academy (09.2025)',
+        'cert.dt': 'Digital Transformation — Santander Open Academy (09.2025)',
+        'cert.english': 'English C1 — University of Gdańsk (07.2022)',
+        'section.about': 'About',
+        'section.experience': 'Experience',
+        'section.projects': 'Projects',
+        'section.education': 'Education',
+        'about.text': "Master's student in Computer Science and Econometrics (Big Data specialization) at the University of Gdańsk, graduate of Mathematical Modelling and Data Analysis. In my data work I cover the full analytical process — ETL, cleaning, validation, analysis, and visualization — using SQL, MS Excel (Power Query), Power BI, Python, and R. During my internship at GPW's Exchange Systems Development Department (WATS project), I worked with market data, data quality verification, and operational process analysis. I focus on accuracy, clear insights, and analyses that hold up — from data quality to the final report.",
+        'exp1.title': 'Intern – Data and Exchange Systems Analyst',
+        'exp1.org': 'Warsaw Stock Exchange · GPW WATS project',
+        'exp1.b1': 'Acquisition, cleaning, and structuring of market data.',
+        'exp1.b2': 'Data quality verification and correctness checks in the STORK application.',
+        'exp1.b3': 'Analysis and parameterization of supervisory alerts.',
+        'exp1.b4': 'Analysis of settlement processes on European markets.',
+        'exp2.title': 'Team Member',
+        'exp2.org': 'Wild West Ranch · seasonal',
+        'exp2.b1': 'Teamwork, task coordination, and customer contact.',
+        'exp3.title': 'Waiter',
+        'exp3.org': 'Bar Tornado · seasonal',
+        'exp3.b1': 'Working under time pressure in a fast-paced environment.',
+        'proj1.title': 'US Flight Delays',
+        'proj1.sub': 'Power BI · Tableau · DAX · star schema',
+        'proj1.p1': 'Analysis of 5.8M domestic US flights (2015, BTS/Kaggle) in two BI tools: in Power BI I built a star schema with role-playing dimensions for departure and arrival airports; in Tableau — a logical relationship layer without rigid joins.',
+        'proj1.p2': 'Dashboards cover on-time performance per BTS standard (≤15 min), Top N rankings for airports, states, and routes, What-If parameters (delay threshold, departure/arrival type), and delay cause breakdown (airline, weather, system, aircraft). The project includes a data quality audit and a set of DAX measures.',
+        'proj2.sub': 'Multivariate analysis · R · Local Data Bank',
+        'proj2.p1': 'Comparison of 16 Polish voivodeships based on 22 socio-economic indicators from Statistics Poland Local Data Bank (2024): labour market, investment, housing, education, R&D, and infrastructure.',
+        'proj2.p2': 'In R I implemented a full pipeline: preliminary analysis and variable diagnostics, PCA, Hellwig feature selection, hierarchical clustering and k-means, TOPSIS/COPRAS rankings, and canonical analysis. Results saved as tables and charts in the final report.',
+        'proj3.title': 'NBA Statistics Analysis',
+        'proj3.sub': 'End-to-End Analytics · R',
+        'proj3.p1': 'End-to-end R project: acquisition of NBA player and game data, cleaning, consistency validation, and dataset preparation for statistical analysis.',
+        'proj3.p2': 'I performed exploratory analysis of key metrics, regression models explaining relationships between statistics and outcomes, and summary visualizations — from raw data to a clear analytical report.',
+        'proj4.p1': 'Live poker broadcast system: real-time recognition of cards and table state from video using OpenCV and PyTorch models.',
+        'proj4.p2': 'Includes stream processing pipeline, read correctness validation, hand statistics aggregation, and live results presentation — with emphasis on data reliability under dynamic visual input.',
+        'tag.validation': 'Validation',
+        'edu1.title': "Master's degree",
+        'edu1.org': '2025 – present · University of Gdańsk',
+        'edu1.desc': 'Computer Science and Econometrics<br>Specialization: Big Data',
+        'edu2.title': "Bachelor's degree",
+        'edu2.org': '2022 – 2025 · University of Gdańsk',
+        'edu2.desc': 'Mathematical Modelling<br>and Data Analysis',
+        'footer.rodo': 'I consent to the processing of my personal data for recruitment purposes in accordance with GDPR (EU 2016/679).'
+      }
+    };
+
+    const langToggle = document.getElementById('lang-toggle');
+    let currentLang = localStorage.getItem('portfolio-lang') || 'pl';
+
+    function applyLang(lang) {
+      const dict = translations[lang];
+      if (!dict) return;
+
+      document.documentElement.lang = lang;
+      document.title = dict['meta.title'];
+
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.dataset.i18n;
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+
+      document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+        const key = el.dataset.i18nHtml;
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+
+      langToggle.textContent = lang === 'pl' ? 'EN' : 'PL';
+      langToggle.setAttribute('aria-label', dict[lang === 'pl' ? 'nav.aria_to_en' : 'nav.aria_to_pl']);
+      document.querySelector('.site-nav').setAttribute('aria-label', lang === 'pl' ? 'Nawigacja po stronie' : 'Site navigation');
+
+      currentLang = lang;
+      localStorage.setItem('portfolio-lang', lang);
+    }
+
+    langToggle.addEventListener('click', () => {
+      applyLang(currentLang === 'pl' ? 'en' : 'pl');
+    });
+
+    applyLang(currentLang);
+  </script>
 </body>
 </html>
