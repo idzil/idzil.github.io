@@ -498,7 +498,7 @@
       </div>
       <div class="header-side">
         <div class="actions">
-          <a class="btn-primary" href="CV_Idzi_Lopatniuk.pdf" download="CV_Idzi_Lopatniuk.pdf" data-i18n="btn.download_cv">Pobierz CV</a>
+          <a class="btn-primary" id="cv-link" href="CV_Idzi_Lopatniuk_PL.pdf" target="_blank" rel="noopener" data-i18n="btn.open_cv">Otwórz CV</a>
           <a class="btn-ghost" href="https://www.linkedin.com/in/ilopatniuk/" target="_blank" rel="noopener">LinkedIn</a>
           <a class="btn-ghost" href="https://github.com/idzil" target="_blank" rel="noopener">GitHub</a>
         </div>
@@ -792,7 +792,7 @@
         'nav.aria_to_en': 'Przełącz na angielski',
         'nav.aria_to_pl': 'Przełącz na polski',
         'lead': 'Analityk danych — SQL, Excel, Power BI, Python, R',
-        'btn.download_cv': 'Pobierz CV',
+        'btn.open_cv': 'Otwórz CV',
         'location': 'Gdynia, Polska',
         'aside.tools': 'Narzędzia',
         'aside.analytics': 'Analityka',
@@ -873,7 +873,7 @@
         'nav.aria_to_en': 'Switch to English',
         'nav.aria_to_pl': 'Switch to Polish',
         'lead': 'Data Analyst — SQL, Excel, Power BI, Python, R',
-        'btn.download_cv': 'Download CV',
+        'btn.open_cv': 'Open CV',
         'location': 'Gdynia, Poland',
         'aside.tools': 'Tools',
         'aside.analytics': 'Analytics',
@@ -948,6 +948,7 @@
     };
 
     const langToggle = document.getElementById('lang-toggle');
+    const cvLink = document.getElementById('cv-link');
     let currentLang = localStorage.getItem('portfolio-lang') || 'pl';
 
     function applyLang(lang) {
@@ -966,6 +967,10 @@
         const key = el.dataset.i18nHtml;
         if (dict[key] !== undefined) el.innerHTML = dict[key];
       });
+
+      if (cvLink) {
+        cvLink.href = lang === 'pl' ? 'CV_Idzi_Lopatniuk_PL.pdf' : 'CV_Idzi_Lopatniuk_EN.pdf';
+      }
 
       langToggle.textContent = lang === 'pl' ? 'EN' : 'PL';
       langToggle.setAttribute('aria-label', dict[lang === 'pl' ? 'nav.aria_to_en' : 'nav.aria_to_pl']);
