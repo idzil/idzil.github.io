@@ -18,10 +18,14 @@ npm run preview
 
 ## Deploy
 
-Push to `main` triggers GitHub Actions (`Deploy GitHub Pages`), which builds `dist/` and publishes it.
+Push to `main` builds the site and publishes it to the `gh-pages` branch.
 
-In the repo: **Settings → Pages → Source → GitHub Actions**.
+**Required once** in GitHub:
 
-Static assets (CV PDFs, certificates) live in `public/` and are copied into the build.
+1. Repo → **Settings → Pages**
+2. **Source**: Deploy from a branch
+3. **Branch**: `gh-pages` / `/ (root)` → Save
 
-Backup of the previous static site: branch `legacy-static`.
+Static assets (CV PDFs, certificates) live in `public/`.
+
+Rollback of the old static site: branch `legacy-static`.
