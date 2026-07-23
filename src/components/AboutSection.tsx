@@ -1,7 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView, useReducedMotion } from 'motion/react'
 import type { TranslationKey } from '../i18n/translations'
-import { LiquidGlassFilter } from './LiquidGlassFilter'
 import { TiltCard } from './TiltCard'
 
 type Translate = (key: TranslationKey) => string
@@ -35,7 +34,7 @@ export function AboutSection({ t }: { t: Translate }) {
                         y: '-1.35em',
                         opacity: 0,
                         rotateX: 55,
-                        filter: 'blur(10px)',
+                        
                       }
                 }
                 animate={
@@ -44,7 +43,7 @@ export function AboutSection({ t }: { t: Translate }) {
                         y: 0,
                         opacity: 1,
                         rotateX: 0,
-                        filter: 'blur(0px)',
+                        
                       }
                     : undefined
                 }
@@ -71,12 +70,7 @@ export function AboutSection({ t }: { t: Translate }) {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
         >
-          <LiquidGlassFilter id="about-liquid-glass" scale={22} />
-          <span
-            className="about-spotlight__liquid"
-            style={{ filter: 'url(#about-liquid-glass)' }}
-            aria-hidden
-          />
+          <span className="about-spotlight__liquid" aria-hidden />
           <span className="about-spotlight__glass" aria-hidden />
 
           <motion.p

@@ -5,7 +5,6 @@ import {
   TOOLS,
   type TranslationKey,
 } from '../i18n/translations'
-import { LiquidGlassFilter } from './LiquidGlassFilter'
 import { TiltCard } from './TiltCard'
 
 type Translate = (key: TranslationKey) => string
@@ -52,7 +51,7 @@ export function SkillsSection({ t }: { t: Translate }) {
                         y: '-1.35em',
                         opacity: 0,
                         rotateX: 55,
-                        filter: 'blur(10px)',
+                        
                       }
                 }
                 animate={
@@ -61,7 +60,7 @@ export function SkillsSection({ t }: { t: Translate }) {
                         y: 0,
                         opacity: 1,
                         rotateX: 0,
-                        filter: 'blur(0px)',
+                        
                       }
                     : undefined
                 }
@@ -95,12 +94,7 @@ export function SkillsSection({ t }: { t: Translate }) {
                 delay: 0.12 + index * 0.1,
               }}
             >
-              <LiquidGlassFilter id={`skills-liquid-glass-${tile.id}`} scale={22} />
-              <span
-                className="skills-card__liquid"
-                style={{ filter: `url(#skills-liquid-glass-${tile.id})` }}
-                aria-hidden
-              />
+              <span className="skills-card__liquid" aria-hidden />
               <span className="skills-card__glass" aria-hidden />
 
               <div className="skills-card__body">

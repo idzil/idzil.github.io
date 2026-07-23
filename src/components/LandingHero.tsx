@@ -94,11 +94,10 @@ export function LandingHero({ lang, role, location, t }: LandingHeroProps) {
             variants={{
               hidden: reduceMotion
                 ? { opacity: 1 }
-                : { opacity: 0, y: 18, filter: 'blur(6px)' },
+                : { opacity: 0, y: 18 },
               show: {
                 opacity: 1,
                 y: 0,
-                filter: 'blur(0px)',
                 transition: { duration: 0.9, ease },
               },
             }}
@@ -112,11 +111,10 @@ export function LandingHero({ lang, role, location, t }: LandingHeroProps) {
             variants={{
               hidden: reduceMotion
                 ? { opacity: 1 }
-                : { opacity: 0, y: 16, filter: 'blur(6px)' },
+                : { opacity: 0, y: 16 },
               show: {
                 opacity: 1,
                 y: 0,
-                filter: 'blur(0px)',
                 transition: { duration: 0.85, ease },
               },
             }}

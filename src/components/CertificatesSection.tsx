@@ -1,7 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView, useReducedMotion } from 'motion/react'
 import { CERTIFICATES, type TranslationKey } from '../i18n/translations'
-import { LiquidGlassFilter } from './LiquidGlassFilter'
 import { TiltCard } from './TiltCard'
 
 type Translate = (key: TranslationKey) => string
@@ -35,7 +34,7 @@ export function CertificatesSection({ t }: { t: Translate }) {
                         y: '-1.35em',
                         opacity: 0,
                         rotateX: 55,
-                        filter: 'blur(10px)',
+                        
                       }
                 }
                 animate={
@@ -44,7 +43,7 @@ export function CertificatesSection({ t }: { t: Translate }) {
                         y: 0,
                         opacity: 1,
                         rotateX: 0,
-                        filter: 'blur(0px)',
+                        
                       }
                     : undefined
                 }
@@ -84,12 +83,7 @@ export function CertificatesSection({ t }: { t: Translate }) {
                   delay: 0.1 + index * 0.08,
                 }}
               >
-                <LiquidGlassFilter id={`cert-liquid-glass-${item.id}`} scale={22} />
-                <span
-                  className="certificate-card__liquid"
-                  style={{ filter: `url(#cert-liquid-glass-${item.id})` }}
-                  aria-hidden
-                />
+                <span className="certificate-card__liquid" aria-hidden />
                 <span className="certificate-card__glass" aria-hidden />
 
                 <div className="certificate-card__body">

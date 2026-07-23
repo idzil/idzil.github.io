@@ -455,9 +455,9 @@ section[id] {
       rgba(255, 255, 255, 0.02) 45%,
       rgba(0, 210, 239, 0.1) 100%
     ),
-    rgba(14, 15, 18, 0.42);
-  backdrop-filter: blur(16px) saturate(120%);
-  -webkit-backdrop-filter: blur(16px) saturate(120%);
+    rgba(14, 15, 18, 0.72);
+  backdrop-filter: blur(8px) saturate(110%);
+  -webkit-backdrop-filter: blur(8px) saturate(110%);
 }
 
 .experience-spotlight__glass {
@@ -597,9 +597,9 @@ section[id] {
       rgba(255, 255, 255, 0.02) 45%,
       rgba(0, 210, 239, 0.1) 100%
     ),
-    rgba(14, 15, 18, 0.42);
-  backdrop-filter: blur(16px) saturate(120%);
-  -webkit-backdrop-filter: blur(16px) saturate(120%);
+    rgba(14, 15, 18, 0.72);
+  backdrop-filter: blur(8px) saturate(110%);
+  -webkit-backdrop-filter: blur(8px) saturate(110%);
 }
 
 .about-spotlight__glass {
@@ -683,9 +683,9 @@ section[id] {
       rgba(255, 255, 255, 0.02) 45%,
       rgba(0, 210, 239, 0.1) 100%
     ),
-    rgba(14, 15, 18, 0.42);
-  backdrop-filter: blur(16px) saturate(120%);
-  -webkit-backdrop-filter: blur(16px) saturate(120%);
+    rgba(14, 15, 18, 0.72);
+  backdrop-filter: blur(8px) saturate(110%);
+  -webkit-backdrop-filter: blur(8px) saturate(110%);
 }
 
 .education-card__glass {
@@ -796,9 +796,9 @@ section[id] {
       rgba(255, 255, 255, 0.02) 45%,
       rgba(0, 210, 239, 0.1) 100%
     ),
-    rgba(14, 15, 18, 0.42);
-  backdrop-filter: blur(16px) saturate(120%);
-  -webkit-backdrop-filter: blur(16px) saturate(120%);
+    rgba(14, 15, 18, 0.72);
+  backdrop-filter: blur(8px) saturate(110%);
+  -webkit-backdrop-filter: blur(8px) saturate(110%);
 }
 
 .certificate-card__glass,
@@ -964,7 +964,6 @@ section[id] {
 .certificate-card,
 .skills-card {
   transform-style: preserve-3d;
-  will-change: transform;
 }
 
 .store-projects {
@@ -1006,7 +1005,6 @@ section[id] {
   display: inline-block;
   transform-origin: 50% 0%;
   padding-bottom: 0.08em;
-  will-change: transform, opacity, filter;
   background: linear-gradient(120deg, #f4fbfd 0%, #f4fbfd 38%, #7adff2 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -1128,9 +1126,9 @@ section[id] {
       rgba(255, 255, 255, 0.02) 45%,
       rgba(0, 210, 239, 0.1) 100%
     ),
-    rgba(14, 15, 18, 0.42);
-  backdrop-filter: blur(16px) saturate(120%);
-  -webkit-backdrop-filter: blur(16px) saturate(120%);
+    rgba(14, 15, 18, 0.72);
+  backdrop-filter: blur(8px) saturate(110%);
+  -webkit-backdrop-filter: blur(8px) saturate(110%);
 }
 
 .store-card__glass {
@@ -1245,8 +1243,8 @@ section[id] {
       rgba(0, 210, 239, 0.1) 100%
     ),
     rgba(12, 13, 16, 0.72);
-  backdrop-filter: blur(24px) saturate(120%);
-  -webkit-backdrop-filter: blur(24px) saturate(120%);
+  backdrop-filter: blur(10px) saturate(110%);
+  -webkit-backdrop-filter: blur(10px) saturate(110%);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
     0 24px 80px rgba(0, 0, 0, 0.45);

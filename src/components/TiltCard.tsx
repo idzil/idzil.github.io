@@ -12,12 +12,12 @@ type TiltCardProps = HTMLMotionProps<'article'> & {
   maxTilt?: number
 }
 
-const SPRING = { stiffness: 220, damping: 22, mass: 0.55 }
+const SPRING = { stiffness: 180, damping: 24, mass: 0.7 }
 
 export function TiltCard({
   children,
   className,
-  maxTilt = 11,
+  maxTilt = 8,
   style,
   onPointerMove,
   onPointerLeave,
@@ -25,6 +25,7 @@ export function TiltCard({
 }: TiltCardProps) {
   const reduceMotion = useReducedMotion()
   const ref = useRef<HTMLElement>(null)
+  const rectRef = useRef<DOMRect | null>(null)
   const x = useMotionValue(0.5)
   const y = useMotionValue(0.5)
 
@@ -33,10 +34,15 @@ export function TiltCard({
   const rotateX = useSpring(rotateXRaw, SPRING)
   const rotateY = useSpring(rotateYRaw, SPRING)
 
+  const handleEnter = () => {
+    if (ref.current) rectRef.current = ref.current.getBoundingClientRect()
+  }
+
   const handleMove = (event: PointerEvent<HTMLElement>) => {
     onPointerMove?.(event)
     if (reduceMotion || !ref.current) return
-    const rect = ref.current.getBoundingClientRect()
+    const rect = rectRef.current ?? ref.current.getBoundingClientRect()
+    rectRef.current = rect
     if (rect.width === 0 || rect.height === 0) return
     x.set((event.clientX - rect.left) / rect.width)
     y.set((event.clientY - rect.top) / rect.height)
@@ -44,6 +50,7 @@ export function TiltCard({
 
   const handleLeave = (event: PointerEvent<HTMLElement>) => {
     onPointerLeave?.(event)
+    rectRef.current = null
     x.set(0.5)
     y.set(0.5)
   }
@@ -56,9 +63,10 @@ export function TiltCard({
         ...(style as object),
         rotateX: reduceMotion ? 0 : rotateX,
         rotateY: reduceMotion ? 0 : rotateY,
-        transformPerspective: 1000,
+        transformPerspective: 900,
         transformStyle: 'preserve-3d' as const,
       }}
+      onPointerEnter={handleEnter}
       onPointerMove={handleMove}
       onPointerLeave={handleLeave}
       {...rest}

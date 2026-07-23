@@ -7,7 +7,6 @@ import {
   useScroll,
   useTransform,
 } from 'motion/react'
-import { LiquidGlassFilter } from './LiquidGlassFilter'
 import {
   PROJECTS,
   translations,
@@ -60,12 +59,7 @@ function ProjectCard({
       transition={{ type: 'spring', stiffness: 340, damping: 34 }}
       whileHover={{ y: -10 }}
     >
-      <LiquidGlassFilter id={`liquid-glass-${index}`} />
-      <span
-        className="store-card__liquid"
-        style={{ filter: `url(#liquid-glass-${index})` }}
-        aria-hidden
-      />
+      <span className="store-card__liquid" aria-hidden />
       <span className="store-card__glass" aria-hidden />
       <span className="store-card__eyebrow">{label}</span>
       <h2 className="store-card__title">{projectTitle(project, t)}</h2>
@@ -240,7 +234,7 @@ export function ProjectsGallery({ t }: { t: Translate }) {
                             y: '-1.35em',
                             opacity: 0,
                             rotateX: 55,
-                            filter: 'blur(10px)',
+                            
                           }
                     }
                     animate={
@@ -249,7 +243,7 @@ export function ProjectsGallery({ t }: { t: Translate }) {
                             y: 0,
                             opacity: 1,
                             rotateX: 0,
-                            filter: 'blur(0px)',
+                            
                           }
                         : undefined
                     }
