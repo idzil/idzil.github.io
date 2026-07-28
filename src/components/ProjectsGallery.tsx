@@ -215,77 +215,118 @@ export function ProjectsGallery({ t }: { t: Translate }) {
   const selected = selectedIndex >= 0 ? PROJECTS[selectedIndex] : null
   const headingShown = Boolean(reduceMotion || headingInView)
 
+  const heading = (
+    <header className="store-projects__head" ref={headingRef}>
+      <h2 className="store-projects__heading" aria-label={title}>
+        {titleWords.map((word, index) => (
+          <motion.span
+            key={`${word}-${index}`}
+            className="store-projects__heading-word"
+            initial={
+              reduceMotion
+                ? false
+                : {
+                    y: '-1.35em',
+                    opacity: 0,
+                    rotateX: 55,
+                  }
+            }
+            animate={
+              headingShown
+                ? {
+                    y: 0,
+                    opacity: 1,
+                    rotateX: 0,
+                  }
+                : undefined
+            }
+            transition={{
+              type: 'spring',
+              stiffness: 110,
+              damping: 13,
+              mass: 0.85,
+              delay: 0.08 + index * 0.14,
+            }}
+            aria-hidden
+          >
+            {word}
+          </motion.span>
+        ))}
+      </h2>
+    </header>
+  )
+
+  if (staticMode) {
+    return (
+      <section id="projekty" className="store-projects store-projects--static">
+        <div className="store-projects__inner">
+          {heading}
+          <div className="store-projects__grid">
+            {PROJECTS.map((project, index) => (
+              <motion.div
+                key={projectId(project)}
+                initial={reduceMotion ? false : { opacity: 0, y: 36 }}
+                whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{
+                  duration: 0.8,
+                  ease: [0.22, 1, 0.36, 1],
+                  delay: 0.12 + index * 0.08,
+                }}
+              >
+                <ProjectCard
+                  project={project}
+                  index={index}
+                  t={t}
+                  reduceHover
+                  onOpen={() => setSelectedId(projectId(project))}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        <AnimatePresence>
+          {selected && (
+            <ProjectExpanded
+              key={projectId(selected)}
+              project={selected}
+              index={selectedIndex}
+              t={t}
+              reduceMotion={reduceMotion}
+              onClose={() => setSelectedId(null)}
+            />
+          )}
+        </AnimatePresence>
+      </section>
+    )
+  }
+
   return (
     <section id="projekty" className="store-projects">
-      <div
-        ref={carouselRef}
-        className={
-          staticMode
-            ? 'store-carousel store-carousel--static'
-            : 'store-carousel'
-        }
-      >
+      <div ref={carouselRef} className="store-carousel">
         <div className="store-carousel__sticky">
           <div className="store-projects__inner store-projects__inner--carousel">
-            <header className="store-projects__head" ref={headingRef}>
-              <h2 className="store-projects__heading" aria-label={title}>
-                {titleWords.map((word, index) => (
-                  <motion.span
-                    key={`${word}-${index}`}
-                    className="store-projects__heading-word"
-                    initial={
-                      reduceMotion
-                        ? false
-                        : {
-                            y: '-1.35em',
-                            opacity: 0,
-                            rotateX: 55,
-                          }
-                    }
-                    animate={
-                      headingShown
-                        ? {
-                            y: 0,
-                            opacity: 1,
-                            rotateX: 0,
-                          }
-                        : undefined
-                    }
-                    transition={{
-                      type: 'spring',
-                      stiffness: 110,
-                      damping: 13,
-                      mass: 0.85,
-                      delay: 0.08 + index * 0.14,
-                    }}
-                    aria-hidden
-                  >
-                    {word}
-                  </motion.span>
-                ))}
-              </h2>
-              {!staticMode && (
-                <motion.p
-                  className="store-carousel__hint"
-                  initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-                  animate={headingShown ? { opacity: 1, y: 0 } : undefined}
-                  transition={{
-                    duration: 0.55,
-                    delay: 0.45,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                >
-                  {t('projects.scroll_hint')}
-                </motion.p>
-              )}
-            </header>
+            {heading}
+            <motion.p
+              className="store-carousel__hint"
+              initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+              animate={headingShown ? { opacity: 1, y: 0 } : undefined}
+              transition={{
+                duration: 0.55,
+                delay: 0.45,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              {t('projects.scroll_hint')}
+            </motion.p>
           </div>
 
           <div className="store-carousel__viewport">
             <motion.div
               ref={trackRef}
               className="store-carousel__track"
-              style={staticMode ? undefined : { x: trackX }}
+              style={{ x: trackX }}
             >
               {PROJECTS.map((project, index) => (
                 <ProjectCard
@@ -293,7 +334,7 @@ export function ProjectsGallery({ t }: { t: Translate }) {
                   project={project}
                   index={index}
                   t={t}
-                  reduceHover={staticMode}
+                  reduceHover={false}
                   onOpen={() => setSelectedId(projectId(project))}
                 />
               ))}
