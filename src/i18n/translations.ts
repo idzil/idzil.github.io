@@ -58,7 +58,6 @@ export const translations = {
     'exp1.b2': 'Weryfikacja jakości danych i poprawności zapisów w aplikacji STORK.',
     'exp1.b3': 'Analiza i parametryzacja alertów nadzorczych.',
     'exp1.b4': 'Analiza procesów rozliczeniowych na rynkach europejskich.',
-    'exp1.badge': 'Staż',
     'proj1.title': 'Opóźnienia lotów USA',
     'proj1.sub': 'Power BI · Tableau · DAX · model gwiazdy',
     'proj1.p1':
@@ -164,7 +163,6 @@ export const translations = {
     'exp1.b2': 'Data quality verification and correctness checks in the STORK application.',
     'exp1.b3': 'Analysis and parameterization of supervisory alerts.',
     'exp1.b4': 'Analysis of settlement processes on European markets.',
-    'exp1.badge': 'Internship',
     'proj1.title': 'US Flight Delays',
     'proj1.sub': 'Power BI · Tableau · DAX · star schema',
     'proj1.p1':
