@@ -64,6 +64,60 @@ body {
   height: 100%;
 }
 
+.mobile-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.mobile-ambient::before,
+.mobile-ambient::after {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+}
+
+.mobile-ambient::before {
+  background:
+    radial-gradient(ellipse 70% 55% at 18% 22%, rgba(0, 210, 239, 0.28), transparent 58%),
+    radial-gradient(ellipse 60% 50% at 88% 18%, rgba(0, 150, 220, 0.2), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 72% 78%, rgba(60, 190, 230, 0.16), transparent 52%);
+  animation: mobile-ambient-drift-a 22s ease-in-out infinite alternate;
+}
+
+.mobile-ambient::after {
+  background:
+    radial-gradient(ellipse 65% 50% at 50% 92%, rgba(0, 210, 239, 0.14), transparent 58%),
+    radial-gradient(ellipse 45% 40% at 8% 68%, rgba(0, 180, 210, 0.12), transparent 50%),
+    radial-gradient(ellipse 35% 30% at 92% 58%, rgba(120, 230, 250, 0.1), transparent 48%);
+  animation: mobile-ambient-drift-b 28s ease-in-out infinite alternate;
+}
+
+@keyframes mobile-ambient-drift-a {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.88;
+  }
+  100% {
+    transform: translate3d(2%, -3%, 0) scale(1.06);
+    opacity: 1;
+  }
+}
+
+@keyframes mobile-ambient-drift-b {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1.04);
+    opacity: 0.82;
+  }
+  100% {
+    transform: translate3d(-3%, 2%, 0) scale(1);
+    opacity: 0.96;
+  }
+}
+
 /* ── Welcome overlay ── */
 .welcome {
   position: fixed;
@@ -1467,9 +1521,17 @@ section[id],
     justify-content: center;
     min-height: 100dvh;
     min-height: 100svh;
-    padding: calc(var(--nav-offset) + env(safe-area-inset-top, 0px) + 16px) 20px 160px;
+    padding: calc(var(--nav-offset) + env(safe-area-inset-top, 0px) + 16px) 20px 200px;
     box-sizing: border-box;
     overflow-x: clip;
+  }
+
+  body {
+    background:
+      radial-gradient(ellipse 85% 60% at 10% -5%, rgba(0, 210, 239, 0.2), transparent 55%),
+      radial-gradient(ellipse 75% 55% at 95% 15%, rgba(0, 150, 210, 0.15), transparent 52%),
+      radial-gradient(ellipse 65% 45% at 55% 105%, rgba(0, 210, 239, 0.11), transparent 58%),
+      var(--bg);
   }
 
   .landing__frame {
@@ -1554,7 +1616,7 @@ section[id],
   }
 
   .store-projects--static {
-    padding-top: 48px;
+    padding-top: 72px;
     padding-bottom: 64px;
   }
 
@@ -1601,11 +1663,11 @@ section[id],
   }
 
   .landing {
-    padding: calc(var(--nav-offset) + env(safe-area-inset-top, 0px) + 12px) 16px 140px;
+    padding: calc(var(--nav-offset) + env(safe-area-inset-top, 0px) + 12px) 16px 180px;
   }
 
   .store-projects--static {
-    padding-top: 40px;
+    padding-top: 64px;
     padding-bottom: 64px;
   }
 
@@ -1649,5 +1711,10 @@ section[id],
   .typewriter-caret {
     animation: none;
     opacity: 0.5;
+  }
+
+  .mobile-ambient::before,
+  .mobile-ambient::after {
+    animation: none;
   }
 }

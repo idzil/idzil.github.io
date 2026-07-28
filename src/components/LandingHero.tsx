@@ -26,8 +26,9 @@ const ease = [0.22, 1, 0.36, 1] as const
 export function LandingHero({ lang, role, location, t }: LandingHeroProps) {
   const reduceMotion = useReducedMotion()
   const isMobile = useIsMobile()
-  const driftOff = Boolean(reduceMotion || isMobile)
-  const [linesOpen, setLinesOpen] = useState(Boolean(driftOff))
+  const scrollDriftOff = Boolean(reduceMotion || isMobile)
+  const entranceOff = Boolean(reduceMotion)
+  const [linesOpen, setLinesOpen] = useState(entranceOff)
   const { scrollY } = useScroll()
 
   const firstX = useTransform(scrollY, (y) => y * 0.45)
@@ -47,8 +48,8 @@ export function LandingHero({ lang, role, location, t }: LandingHeroProps) {
           >
             <motion.span
               className="landing__line"
-              style={driftOff ? undefined : { x: firstX }}
-              initial={driftOff ? false : { y: '115%', opacity: 0 }}
+              style={scrollDriftOff ? undefined : { x: firstX }}
+              initial={entranceOff ? false : { y: '115%', opacity: 0 }}
               animate={{ y: '0%', opacity: 1 }}
               transition={{ duration: 1.05, ease, delay: 0.08 }}
               aria-hidden
@@ -65,8 +66,8 @@ export function LandingHero({ lang, role, location, t }: LandingHeroProps) {
           >
             <motion.span
               className="landing__line"
-              style={driftOff ? undefined : { x: lastX }}
-              initial={driftOff ? false : { y: '115%', opacity: 0 }}
+              style={scrollDriftOff ? undefined : { x: lastX }}
+              initial={entranceOff ? false : { y: '115%', opacity: 0 }}
               animate={{ y: '0%', opacity: 1 }}
               transition={{ duration: 1.05, ease, delay: 0.22 }}
               onAnimationComplete={() => setLinesOpen(true)}
@@ -79,7 +80,7 @@ export function LandingHero({ lang, role, location, t }: LandingHeroProps) {
 
         <motion.div
           className="landing__meta"
-          style={driftOff ? undefined : { x: metaX }}
+          style={scrollDriftOff ? undefined : { x: metaX }}
           initial="hidden"
           animate="show"
           variants={{
@@ -87,7 +88,7 @@ export function LandingHero({ lang, role, location, t }: LandingHeroProps) {
             show: {
               transition: {
                 staggerChildren: 0.16,
-                delayChildren: driftOff ? 0 : 0.55,
+                delayChildren: entranceOff ? 0 : 0.55,
               },
             },
           }}
@@ -95,7 +96,7 @@ export function LandingHero({ lang, role, location, t }: LandingHeroProps) {
           <motion.p
             className="landing__identity"
             variants={{
-              hidden: driftOff ? { opacity: 1 } : { opacity: 0, y: 18 },
+              hidden: entranceOff ? { opacity: 1 } : { opacity: 0, y: 18 },
               show: {
                 opacity: 1,
                 y: 0,
@@ -110,7 +111,7 @@ export function LandingHero({ lang, role, location, t }: LandingHeroProps) {
           <motion.div
             className="landing__contact"
             variants={{
-              hidden: driftOff ? { opacity: 1 } : { opacity: 0, y: 16 },
+              hidden: entranceOff ? { opacity: 1 } : { opacity: 0, y: 16 },
               show: {
                 opacity: 1,
                 y: 0,
@@ -137,7 +138,7 @@ export function LandingHero({ lang, role, location, t }: LandingHeroProps) {
           <motion.div
             className="landing__marquee-wrap"
             variants={{
-              hidden: driftOff
+              hidden: entranceOff
                 ? { opacity: 1 }
                 : { opacity: 0, y: 22, clipPath: 'inset(0 40% 0 40%)' },
               show: {

@@ -10,8 +10,9 @@ function AppShell() {
   const isMobile = useIsMobile()
 
   return (
-    <div className="app">
+    <div className={`app${isMobile ? ' app--mobile' : ''}`}>
       {!isMobile && <MagneticFilings />}
+      {isMobile && <div className="mobile-ambient" aria-hidden />}
       {!introDone && <WelcomeIntro onFinished={() => setIntroDone(true)} />}
       {introDone && <PortfolioPage />}
     </div>
