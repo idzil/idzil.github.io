@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
+  AnimatePresence,
   motion,
   useMotionValueEvent,
   useReducedMotion,
   useScroll,
 } from 'motion/react'
 import { useLanguage } from '../i18n/LanguageContext'
+import { useIsMobile } from '../hooks/useIsMobile'
 import { AboutSection } from './AboutSection'
 import { CertificatesSection } from './CertificatesSection'
 import { EducationSection } from './EducationSection'
@@ -14,14 +16,25 @@ import { LandingHero } from './LandingHero'
 import { ProjectsGallery } from './ProjectsGallery'
 import { SkillsSection } from './SkillsSection'
 
+const NAV_LINKS = [
+  { href: '#projekty', key: 'nav.projects' },
+  { href: '#doswiadczenie', key: 'nav.experience' },
+  { href: '#o-mnie', key: 'nav.about' },
+  { href: '#wyksztalcenie', key: 'nav.education' },
+  { href: '#certyfikaty', key: 'nav.certificates' },
+  { href: '#umiejetnosci', key: 'nav.skills' },
+] as const
+
 export function PortfolioPage() {
   const { lang, t, toggleLang } = useLanguage()
   const reduceMotion = useReducedMotion()
+  const isMobile = useIsMobile()
   const { scrollY } = useScroll()
   const [hidden, setHidden] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useMotionValueEvent(scrollY, 'change', (current) => {
-    if (reduceMotion) {
+    if (reduceMotion || isMobile || menuOpen) {
       setHidden(false)
       return
     }
@@ -33,6 +46,22 @@ export function PortfolioPage() {
     }
   })
 
+  useEffect(() => {
+    if (!menuOpen) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMenuOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = prev
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [menuOpen])
+
+  const closeMenu = () => setMenuOpen(false)
+
   return (
     <motion.div
       className="portfolio"
@@ -41,39 +70,33 @@ export function PortfolioPage() {
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
     >
       <motion.nav
-        className="site-nav"
+        className={`site-nav${menuOpen ? ' site-nav--open' : ''}`}
         aria-label={t('nav.aria')}
         animate={{
-          y: hidden ? -120 : 0,
-          opacity: hidden ? 0 : 1,
+          y: hidden && !menuOpen ? -120 : 0,
+          opacity: hidden && !menuOpen ? 0 : 1,
         }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
-        style={{ pointerEvents: hidden ? 'none' : 'auto' }}
+        style={{ pointerEvents: hidden && !menuOpen ? 'none' : 'auto' }}
       >
         <div className="site-nav-inner">
-          <a className="site-nav__mark" href="#kontakt" aria-label="Idzi Łopatniuk">
+          <a
+            className="site-nav__mark"
+            href="#kontakt"
+            aria-label="Idzi Łopatniuk"
+            onClick={closeMenu}
+          >
             IL
           </a>
           <div className="site-nav__right">
-            <ul>
-              <li>
-                <a href="#projekty">{t('nav.projects')}</a>
-              </li>
-              <li>
-                <a href="#doswiadczenie">{t('nav.experience')}</a>
-              </li>
-              <li>
-                <a href="#o-mnie">{t('nav.about')}</a>
-              </li>
-              <li>
-                <a href="#wyksztalcenie">{t('nav.education')}</a>
-              </li>
-              <li>
-                <a href="#certyfikaty">{t('nav.certificates')}</a>
-              </li>
-              <li>
-                <a href="#umiejetnosci">{t('nav.skills')}</a>
-              </li>
+            <ul className="site-nav__links">
+              {NAV_LINKS.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} onClick={closeMenu}>
+                    {t(link.key)}
+                  </a>
+                </li>
+              ))}
             </ul>
             <button
               type="button"
@@ -83,8 +106,43 @@ export function PortfolioPage() {
             >
               {lang === 'pl' ? 'EN' : 'PL'}
             </button>
+            <button
+              type="button"
+              className={`site-nav__burger${menuOpen ? ' site-nav__burger--open' : ''}`}
+              aria-expanded={menuOpen}
+              aria-controls="site-nav-drawer"
+              aria-label={t(menuOpen ? 'nav.menu_close' : 'nav.menu_open')}
+              onClick={() => setMenuOpen((open) => !open)}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
           </div>
         </div>
+
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              id="site-nav-drawer"
+              className="site-nav__drawer"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.22, ease: 'easeOut' }}
+            >
+              <ul>
+                {NAV_LINKS.map((link) => (
+                  <li key={link.href}>
+                    <a href={link.href} onClick={closeMenu}>
+                      {t(link.key)}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.nav>
 
       <LandingHero

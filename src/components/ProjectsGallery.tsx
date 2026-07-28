@@ -7,6 +7,7 @@ import {
   useScroll,
   useTransform,
 } from 'motion/react'
+import { useIsMobile } from '../hooks/useIsMobile'
 import {
   PROJECTS,
   translations,
@@ -42,11 +43,13 @@ function ProjectCard({
   index,
   onOpen,
   t,
+  reduceHover,
 }: {
   project: ProjectItem
   index: number
   onOpen: () => void
   t: Translate
+  reduceHover?: boolean
 }) {
   const label = String(index + 1).padStart(2, '0')
 
@@ -57,7 +60,7 @@ function ProjectCard({
       onClick={onOpen}
       style={{ borderRadius: CARD_RADIUS }}
       transition={{ type: 'spring', stiffness: 340, damping: 34 }}
-      whileHover={{ y: -10 }}
+      whileHover={reduceHover ? undefined : { y: -10 }}
     >
       <span className="store-card__liquid" aria-hidden />
       <span className="store-card__glass" aria-hidden />
@@ -168,6 +171,8 @@ function ProjectExpanded({
 
 export function ProjectsGallery({ t }: { t: Translate }) {
   const reduceMotion = useReducedMotion()
+  const isMobile = useIsMobile()
+  const staticMode = Boolean(reduceMotion || isMobile)
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [travel, setTravel] = useState(
     Math.max(0, (PROJECTS.length - 1) * (CARD_WIDTH + CARD_GAP)),
@@ -193,6 +198,7 @@ export function ProjectsGallery({ t }: { t: Translate }) {
   const titleWords = title.split(' ')
 
   useEffect(() => {
+    if (staticMode) return
     const measure = () => {
       const track = trackRef.current
       if (!track) return
@@ -203,7 +209,7 @@ export function ProjectsGallery({ t }: { t: Translate }) {
     measure()
     window.addEventListener('resize', measure)
     return () => window.removeEventListener('resize', measure)
-  }, [])
+  }, [staticMode])
 
   const selectedIndex = PROJECTS.findIndex((p) => projectId(p) === selectedId)
   const selected = selectedIndex >= 0 ? PROJECTS[selectedIndex] : null
@@ -214,7 +220,7 @@ export function ProjectsGallery({ t }: { t: Translate }) {
       <div
         ref={carouselRef}
         className={
-          reduceMotion
+          staticMode
             ? 'store-carousel store-carousel--static'
             : 'store-carousel'
         }
@@ -234,7 +240,6 @@ export function ProjectsGallery({ t }: { t: Translate }) {
                             y: '-1.35em',
                             opacity: 0,
                             rotateX: 55,
-                            
                           }
                     }
                     animate={
@@ -243,7 +248,6 @@ export function ProjectsGallery({ t }: { t: Translate }) {
                             y: 0,
                             opacity: 1,
                             rotateX: 0,
-                            
                           }
                         : undefined
                     }
@@ -260,14 +264,20 @@ export function ProjectsGallery({ t }: { t: Translate }) {
                   </motion.span>
                 ))}
               </h2>
-              <motion.p
-                className="store-carousel__hint"
-                initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-                animate={headingShown ? { opacity: 1, y: 0 } : undefined}
-                transition={{ duration: 0.55, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              >
-                {t('projects.scroll_hint')}
-              </motion.p>
+              {!staticMode && (
+                <motion.p
+                  className="store-carousel__hint"
+                  initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+                  animate={headingShown ? { opacity: 1, y: 0 } : undefined}
+                  transition={{
+                    duration: 0.55,
+                    delay: 0.45,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                >
+                  {t('projects.scroll_hint')}
+                </motion.p>
+              )}
             </header>
           </div>
 
@@ -275,7 +285,7 @@ export function ProjectsGallery({ t }: { t: Translate }) {
             <motion.div
               ref={trackRef}
               className="store-carousel__track"
-              style={reduceMotion ? undefined : { x: trackX }}
+              style={staticMode ? undefined : { x: trackX }}
             >
               {PROJECTS.map((project, index) => (
                 <ProjectCard
@@ -283,6 +293,7 @@ export function ProjectsGallery({ t }: { t: Translate }) {
                   project={project}
                   index={index}
                   t={t}
+                  reduceHover={staticMode}
                   onOpen={() => setSelectedId(projectId(project))}
                 />
               ))}

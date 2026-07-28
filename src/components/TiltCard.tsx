@@ -7,6 +7,7 @@ import {
   type HTMLMotionProps,
 } from 'motion/react'
 import { useRef, type PointerEvent } from 'react'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 type TiltCardProps = HTMLMotionProps<'article'> & {
   maxTilt?: number
@@ -24,6 +25,8 @@ export function TiltCard({
   ...rest
 }: TiltCardProps) {
   const reduceMotion = useReducedMotion()
+  const isMobile = useIsMobile()
+  const tiltOff = Boolean(reduceMotion || isMobile)
   const ref = useRef<HTMLElement>(null)
   const rectRef = useRef<DOMRect | null>(null)
   const x = useMotionValue(0.5)
@@ -35,12 +38,13 @@ export function TiltCard({
   const rotateY = useSpring(rotateYRaw, SPRING)
 
   const handleEnter = () => {
-    if (ref.current) rectRef.current = ref.current.getBoundingClientRect()
+    if (tiltOff || !ref.current) return
+    rectRef.current = ref.current.getBoundingClientRect()
   }
 
   const handleMove = (event: PointerEvent<HTMLElement>) => {
     onPointerMove?.(event)
-    if (reduceMotion || !ref.current) return
+    if (tiltOff || !ref.current) return
     const rect = rectRef.current ?? ref.current.getBoundingClientRect()
     rectRef.current = rect
     if (rect.width === 0 || rect.height === 0) return
@@ -61,14 +65,14 @@ export function TiltCard({
       className={className}
       style={{
         ...(style as object),
-        rotateX: reduceMotion ? 0 : rotateX,
-        rotateY: reduceMotion ? 0 : rotateY,
+        rotateX: tiltOff ? 0 : rotateX,
+        rotateY: tiltOff ? 0 : rotateY,
         transformPerspective: 900,
         transformStyle: 'preserve-3d' as const,
       }}
-      onPointerEnter={handleEnter}
-      onPointerMove={handleMove}
-      onPointerLeave={handleLeave}
+      onPointerEnter={tiltOff ? undefined : handleEnter}
+      onPointerMove={tiltOff ? onPointerMove : handleMove}
+      onPointerLeave={tiltOff ? onPointerLeave : handleLeave}
       {...rest}
     >
       {children}
