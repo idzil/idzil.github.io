@@ -14,6 +14,7 @@
   --display: 'Syne', system-ui, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, monospace;
   --nav-offset: 96px;
+  --hero-top-gap: 0px;
 }
 
 *,
@@ -153,6 +154,7 @@ body {
   left: 0;
   right: 0;
   z-index: 30;
+  padding-top: env(safe-area-inset-top, 0px);
   background: transparent;
 }
 
@@ -273,8 +275,9 @@ body {
   border: none;
 }
 
-section[id] {
-  scroll-margin-top: var(--nav-offset);
+section[id],
+.landing {
+  scroll-margin-top: calc(var(--nav-offset) + env(safe-area-inset-top, 0px) + 12px);
 }
 
 /* ── Landing hero — option C: interactive letter reveal ── */
@@ -1391,7 +1394,8 @@ section[id] {
 
 @media (max-width: 960px) {
   :root {
-    --nav-offset: 80px;
+    --nav-offset: 88px;
+    --hero-top-gap: 88px;
   }
 
   .portfolio__wrap {
@@ -1462,7 +1466,7 @@ section[id] {
 
   .landing {
     align-items: flex-start;
-    padding: calc(var(--nav-offset) + 56px) 20px 112px;
+    padding: calc(var(--nav-offset) + var(--hero-top-gap) + env(safe-area-inset-top, 0px)) 20px 140px;
     min-height: auto;
     overflow-x: clip;
   }
@@ -1549,7 +1553,12 @@ section[id] {
   }
 
   .store-projects--static {
-    padding-top: 64px;
+    padding-top: 88px;
+    padding-bottom: 28px;
+  }
+
+  .experience-section {
+    padding-top: 20px;
   }
 
   .store-projects__grid {
@@ -1583,7 +1592,8 @@ section[id] {
 
 @media (max-width: 600px) {
   :root {
-    --nav-offset: 72px;
+    --nav-offset: 80px;
+    --hero-top-gap: 76px;
   }
 
   .portfolio__wrap {
@@ -1595,11 +1605,16 @@ section[id] {
   }
 
   .landing {
-    padding: calc(var(--nav-offset) + 48px) 16px 96px;
+    padding: calc(var(--nav-offset) + var(--hero-top-gap) + env(safe-area-inset-top, 0px)) 16px 120px;
   }
 
   .store-projects--static {
-    padding-top: 56px;
+    padding-top: 72px;
+    padding-bottom: 24px;
+  }
+
+  .experience-section {
+    padding-top: 16px;
   }
 
   .landing__name {
