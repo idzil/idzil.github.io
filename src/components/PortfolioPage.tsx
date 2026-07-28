@@ -47,6 +47,10 @@ export function PortfolioPage() {
   })
 
   useEffect(() => {
+    if (!isMobile) setMenuOpen(false)
+  }, [isMobile])
+
+  useEffect(() => {
     if (!menuOpen) return
     const prev = document.body.style.overflow
     document.body.style.overflow = 'hidden'
@@ -89,15 +93,17 @@ export function PortfolioPage() {
             IL
           </a>
           <div className="site-nav__right">
-            <ul className="site-nav__links">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a href={link.href} onClick={closeMenu}>
-                    {t(link.key)}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            {!isMobile && (
+              <ul className="site-nav__links">
+                {NAV_LINKS.map((link) => (
+                  <li key={link.href}>
+                    <a href={link.href} onClick={closeMenu}>
+                      {t(link.key)}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
             <button
               type="button"
               className="lang-toggle"
@@ -106,23 +112,25 @@ export function PortfolioPage() {
             >
               {lang === 'pl' ? 'EN' : 'PL'}
             </button>
-            <button
-              type="button"
-              className={`site-nav__burger${menuOpen ? ' site-nav__burger--open' : ''}`}
-              aria-expanded={menuOpen}
-              aria-controls="site-nav-drawer"
-              aria-label={t(menuOpen ? 'nav.menu_close' : 'nav.menu_open')}
-              onClick={() => setMenuOpen((open) => !open)}
-            >
-              <span />
-              <span />
-              <span />
-            </button>
+            {isMobile && (
+              <button
+                type="button"
+                className={`site-nav__burger${menuOpen ? ' site-nav__burger--open' : ''}`}
+                aria-expanded={menuOpen}
+                aria-controls="site-nav-drawer"
+                aria-label={t(menuOpen ? 'nav.menu_close' : 'nav.menu_open')}
+                onClick={() => setMenuOpen((open) => !open)}
+              >
+                <span />
+                <span />
+                <span />
+              </button>
+            )}
           </div>
         </div>
 
         <AnimatePresence>
-          {menuOpen && (
+          {isMobile && menuOpen && (
             <motion.div
               id="site-nav-drawer"
               className="site-nav__drawer"
