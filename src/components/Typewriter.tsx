@@ -14,7 +14,7 @@ function delayForChar(char: string, next: string | undefined): number {
   if (char === '\n') {
     return base * 8 + Math.random() * 60
   }
-  if (/[.,—–;:]/.test(char)) {
+  if (/[.,\-–;:]/.test(char)) {
     return base * 6 + Math.random() * 80
   }
   if (char === ' ') {

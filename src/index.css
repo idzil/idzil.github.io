@@ -311,7 +311,7 @@ section[id],
   scroll-margin-top: calc(var(--nav-offset) + env(safe-area-inset-top, 0px) + 12px);
 }
 
-/* ── Landing hero — option C: interactive letter reveal ── */
+/* ── Landing hero - option C: interactive letter reveal ── */
 .landing {
   position: relative;
   min-height: 100dvh;

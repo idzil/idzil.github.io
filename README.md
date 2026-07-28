@@ -1,4 +1,4 @@
-# Idzi Łopatniuk — Portfolio
+# Idzi Łopatniuk - Portfolio
 
 React (Vite) + Motion → [idzil.github.io](https://idzil.github.io/)
 
