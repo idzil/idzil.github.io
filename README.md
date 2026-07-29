@@ -1,6 +1,6 @@
 # Idzi Łopatniuk - Portfolio
 
-React (Vite) + Motion → [idzil.github.io](https://idzil.github.io/)
+React (Vite) + Motion → [idzil.uk](https://idzil.uk/)
 
 ## Dev
 
