@@ -7,7 +7,12 @@ import {
 } from 'motion/react'
 import { Marquee } from './Marquee'
 import { useIsMobile } from '../hooks/useIsMobile'
-import { MARQUEE_ITEMS, type Lang, type TranslationKey } from '../i18n/translations'
+import {
+  CV_HREF,
+  MARQUEE_ITEMS,
+  type Lang,
+  type TranslationKey,
+} from '../i18n/translations'
 
 type Translate = (key: TranslationKey) => string
 
@@ -132,6 +137,15 @@ export function LandingHero({ lang, role, location, t }: LandingHeroProps) {
               aria-label={t('hero.email_aria')}
             >
               {t('hero.email')}
+            </a>
+            <a
+              className="landing__contact-link landing__contact-link--cv"
+              href={CV_HREF[lang]}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t('hero.open_cv_aria')}
+            >
+              {t('hero.open_cv')}
             </a>
           </motion.div>
 

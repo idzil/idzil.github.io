@@ -22,6 +22,8 @@ export const translations = {
     'hero.email': 'idzi.lopatniuk@gmail.com',
     'hero.phone_aria': 'Zadzwoń',
     'hero.email_aria': 'Napisz e-mail',
+    'hero.open_cv': 'Pobierz CV',
+    'hero.open_cv_aria': 'Pobierz CV w PDF',
     'skill.etl': 'ETL',
     'skill.validation': 'Walidacja danych',
     'skill.eda': 'Analiza eksploracyjna',
@@ -127,6 +129,8 @@ export const translations = {
     'hero.email': 'idzi.lopatniuk@gmail.com',
     'hero.phone_aria': 'Call',
     'hero.email_aria': 'Send email',
+    'hero.open_cv': 'Download CV',
+    'hero.open_cv_aria': 'Download CV as PDF',
     'skill.etl': 'ETL',
     'skill.validation': 'Data validation',
     'skill.eda': 'Exploratory analysis',
@@ -245,6 +249,11 @@ export const MARQUEE_ITEMS = {
     'GenAI',
   ],
 } as const
+
+export const CV_HREF = {
+  pl: '/CV_Idzi_Lopatniuk_PL.pdf',
+  en: '/CV_Idzi_Lopatniuk_EN.pdf',
+} as const satisfies Record<Lang, string>
 
 export const TOOLS = [
   'SQL',

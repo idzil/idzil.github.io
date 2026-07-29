@@ -7,6 +7,7 @@ import {
   useScroll,
 } from 'motion/react'
 import { useLanguage } from '../i18n/LanguageContext'
+import { CV_HREF } from '../i18n/translations'
 import { useIsMobile } from '../hooks/useIsMobile'
 import { AboutSection } from './AboutSection'
 import { CertificatesSection } from './CertificatesSection'
@@ -147,6 +148,16 @@ export function PortfolioPage() {
                     </a>
                   </li>
                 ))}
+                <li>
+                  <a
+                    href={CV_HREF[lang]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={closeMenu}
+                  >
+                    {t('hero.open_cv')}
+                  </a>
+                </li>
               </ul>
             </motion.div>
           )}

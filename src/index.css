@@ -413,6 +413,15 @@ section[id],
   border-color: rgba(0, 210, 239, 0.7);
 }
 
+.landing__contact-link--cv {
+  color: var(--accent-ink);
+  border-color: rgba(0, 210, 239, 0.45);
+}
+
+.landing__contact-link--cv:hover {
+  border-color: rgba(0, 210, 239, 0.95);
+}
+
 .landing__marquee-wrap {
   width: 100%;
   max-width: 820px;
