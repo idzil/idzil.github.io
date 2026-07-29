@@ -96,63 +96,6 @@ body {
     radial-gradient(ellipse 35% 30% at 92% 58%, rgba(120, 230, 250, 0.08), transparent 48%);
 }
 
-/* ── Welcome overlay ── */
-.welcome {
-  position: fixed;
-  inset: 0;
-  z-index: 20;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  background: transparent;
-}
-
-.welcome__inner {
-  position: relative;
-  z-index: 1;
-  max-width: 720px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 28px;
-}
-
-.welcome__text {
-  font-size: clamp(1.35rem, 3.6vw, 2.15rem);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.35;
-  color: var(--ink);
-  min-height: 2.8em;
-  white-space: pre-line;
-}
-
-.typewriter-caret {
-  display: inline-block;
-  width: 2px;
-  height: 1.05em;
-  margin-left: 3px;
-  vertical-align: text-bottom;
-  background: var(--accent);
-  animation: caret-blink 1s steps(1) infinite;
-}
-
-.typewriter-caret--done {
-  opacity: 0.35;
-}
-
-@keyframes caret-blink {
-  0%,
-  45% {
-    opacity: 1;
-  }
-  50%,
-  100% {
-    opacity: 0;
-  }
-}
-
 /* ── Portfolio page ── */
 .portfolio {
   position: relative;
@@ -1692,12 +1635,5 @@ section[id],
   .skills-card__glass,
   .store-card__glass {
     opacity: 0.35;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .typewriter-caret {
-    animation: none;
-    opacity: 0.5;
   }
 }

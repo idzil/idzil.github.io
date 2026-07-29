@@ -96,11 +96,6 @@ export const translations = {
       'Projekt end-to-end w R: pozyskanie danych o zawodnikach i meczach NBA, czyszczenie, walidacja spójności oraz przygotowanie zestawu pod analizę statystyczną.',
     'proj3.p2':
       'Wykonałem analizę eksploracyjną kluczowych metryk, modele regresyjne wyjaśniające zależności między statystykami a wynikami oraz wizualizacje podsumowujące wnioski - od surowych danych po czytelny raport analityczny.',
-    'proj4.p1':
-      'System do transmisji pokera na żywo: rozpoznawanie kart i stanu stołu z obrazu wideo w czasie rzeczywistym z wykorzystaniem OpenCV i modeli PyTorch.',
-    'proj4.p2':
-      'Obejmuje pipeline przetwarzania strumienia, walidację poprawności odczytów, agregację statystyk rozdania i prezentację wyników na żywo - z naciskiem na niezawodność danych przy dynamicznym wejściu wizualnym.',
-    'tag.validation': 'Walidacja',
     'edu1.title': 'Studia magisterskie',
     'edu1.org': '2025 – obecnie · Uniwersytet Gdański',
     'edu1.desc': 'Informatyka i Ekonometria<br>Specjalizacja: Big Data',
@@ -203,11 +198,6 @@ export const translations = {
       'End-to-end R project: acquisition of NBA player and game data, cleaning, consistency validation, and dataset preparation for statistical analysis.',
     'proj3.p2':
       'I performed exploratory analysis of key metrics, regression models explaining relationships between statistics and outcomes, and summary visualizations - from raw data to a clear analytical report.',
-    'proj4.p1':
-      'Live poker broadcast system: real-time recognition of cards and table state from video using OpenCV and PyTorch models.',
-    'proj4.p2':
-      'Includes stream processing pipeline, read correctness validation, hand statistics aggregation, and live results presentation - with emphasis on data reliability under dynamic visual input.',
-    'tag.validation': 'Validation',
     'edu1.title': "Master's degree",
     'edu1.org': '2025 – present · University of Gdańsk',
     'edu1.desc': 'Computer Science and Econometrics<br>Specialization: Big Data',
@@ -389,13 +379,5 @@ export const PROJECTS: readonly {
     p2: 'proj3.p2',
     tags: ['R', 'ETL', 'Regresja'],
     href: 'https://github.com/idzil/nba_stats_analysis',
-  },
-  {
-    title: 'Poker Broadcast System',
-    sub: 'Python · OpenCV · PyTorch',
-    p1: 'proj4.p1',
-    p2: 'proj4.p2',
-    tags: ['Python', 'OpenCV', 'tag.validation'],
-    href: null,
   },
 ]
