@@ -42,6 +42,8 @@ export const translations = {
     'cert.english.org': 'Uniwersytet Gdański',
     'cert.aif.title': 'AI Fundamentals',
     'cert.aif.org': 'DataCamp',
+    'cert.pda.title': 'Python Data Associate',
+    'cert.pda.org': 'DataCamp',
     'section.about': 'O mnie',
     'section.experience': 'Doświadczenie',
     'section.projects_selected': 'Wybrane projekty',
@@ -149,6 +151,8 @@ export const translations = {
     'cert.english.org': 'University of Gdańsk',
     'cert.aif.title': 'AI Fundamentals',
     'cert.aif.org': 'DataCamp',
+    'cert.pda.title': 'Python Data Associate',
+    'cert.pda.org': 'DataCamp',
     'section.about': 'About',
     'section.experience': 'Experience',
     'section.projects_selected': 'Selected Projects',
@@ -279,6 +283,13 @@ export const SKILL_KEYS = [
 ] as const satisfies readonly TranslationKey[]
 
 export const CERTIFICATES = [
+  {
+    id: 'pda',
+    date: '07.2026',
+    title: 'cert.pda.title',
+    org: 'cert.pda.org',
+    href: '/certs/datacamp-python-data-associate.pdf',
+  },
   {
     id: 'aif',
     date: '07.2026',
