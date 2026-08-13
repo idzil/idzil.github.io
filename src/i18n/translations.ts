@@ -302,24 +302,28 @@ export const CERTIFICATES = [
     date: '09.2025',
     title: 'cert.powerbi.title',
     org: 'cert.powerbi.org',
+    href: '/certs/santander_power_bi.pdf',
   },
   {
     id: 'ids',
     date: '09.2025',
     title: 'cert.ids.title',
     org: 'cert.ids.org',
+    href: '/certs/santander_data_science.pdf',
   },
   {
     id: 'dt',
     date: '09.2025',
     title: 'cert.dt.title',
     org: 'cert.dt.org',
+    href: '/certs/santander_digital_transformation.pdf',
   },
   {
     id: 'english',
     date: '07.2022',
     title: 'cert.english.title',
     org: 'cert.english.org',
+    href: '/certs/certyfikat_jez_ang.pdf',
   },
 ] as const satisfies readonly {
   id: string
