@@ -267,6 +267,7 @@ export const TOOLS = [
   'Tableau',
   'Python',
   'R',
+  'Git',
   'n8n',
   'Cursor',
 ] as const
